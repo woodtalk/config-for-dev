@@ -3,10 +3,12 @@
 " http://github.com/gmarik/vundle
 
 set nocompatible              " be iMproved, required
-filetype on
+if has('macunix')
+    filetype on
+endif
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle, required
@@ -15,7 +17,7 @@ Plugin 'gmarik/vundle'
 " my vundles
 "Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'moll/vim-node'
 "Plugin 'myhere/vim-nodejs-complete'
