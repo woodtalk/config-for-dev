@@ -27,7 +27,7 @@ Plugin 'moll/vim-node'
 
 Plugin 'othree/javascript-libraries-syntax.vim'
 " othree/javascript-libraries-syntax.vim {{{
-let g:used_javascript_libs = 'requirejs'
+let g:used_javascript_libs = 'requirejs,underscore'
 " }}}
 Plugin 'jelera/vim-javascript-syntax'
 
