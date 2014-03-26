@@ -23,8 +23,12 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'moll/vim-node'
 "Plugin 'myhere/vim-nodejs-complete'
-Plugin 'ahayman/vim-nodejs-complete'
+"Plugin 'ahayman/vim-nodejs-complete'
+
 Plugin 'othree/javascript-libraries-syntax.vim'
+" othree/javascript-libraries-syntax.vim {{{
+let g:used_javascript_libs = 'requirejs'
+" }}}
 Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'jshint2.vim'
