@@ -14,7 +14,6 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
-"Plugin 'Tagbar'
 Plugin 'The-NERD-tree'
 " {{{
 map <C-n> :NERDTreeToggle<CR>
@@ -48,8 +47,7 @@ inoremap <silent><F3> <C-O>:lprevious<CR>
 vnoremap <silent><F3> :lprevious<CR>
 " }}}
 
-
-Plugin 'sidorares/node-vim-debugger'
+"Plugin 'sidorares/node-vim-debugger'
 
 filetype plugin indent on     " required
 
