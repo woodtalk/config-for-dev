@@ -21,15 +21,17 @@ map <C-n> :NERDTreeToggle<CR>
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'moll/vim-node'
+"Plugin 'moll/vim-node'
 "Plugin 'myhere/vim-nodejs-complete'
-"Plugin 'ahayman/vim-nodejs-complete'
+Plugin 'ahayman/vim-nodejs-complete'
+" automatically open and close the popup menu / preview window
+"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 " othree/javascript-libraries-syntax.vim {{{
 let g:used_javascript_libs = 'requirejs,underscore'
 " }}}
-Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'jshint2.vim'
 " jshint2.vim = {{{
@@ -53,10 +55,18 @@ vnoremap <silent><F3> :lprevious<CR>
 
 "Plugin 'sidorares/node-vim-debugger'
 
+
 filetype plugin indent on     " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my config
+
+" node running {{{
+nnoremap <silent><F5> :!node %<CR>
+inoremap <silent><F5> :!node %<CR>
+vnoremap <silent><F5> :!node %<CR>
+" }}}
+
 
 syntax on
 set nu
