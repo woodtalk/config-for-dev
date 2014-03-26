@@ -15,7 +15,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 Plugin 'The-NERD-tree'
-" {{{
+" The-NERD-tree = {{{
 map <C-n> :NERDTreeToggle<CR>
 " }}}
 
@@ -28,7 +28,7 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'jshint2.vim'
-" {{{
+" jshint2.vim = {{{
 "let jshint2_save=1
 
 " jshint validation
