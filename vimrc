@@ -14,8 +14,9 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
-Plugin 'The-NERD-tree'
 " The-NERD-tree = {{{
+Plugin 'The-NERD-tree'
+
 map <C-n> :NERDTreeToggle<CR>
 " }}}
 
@@ -23,18 +24,21 @@ Plugin 'tpope/vim-fugitive'
 
 "Plugin 'moll/vim-node'
 "Plugin 'myhere/vim-nodejs-complete'
-Plugin 'ahayman/vim-nodejs-complete'
+"Plugin 'ahayman/vim-nodejs-complete'
 " automatically open and close the popup menu / preview window
 "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 Plugin 'jelera/vim-javascript-syntax'
+
+" javascript-libraries-syntax.vim = {{{
 Plugin 'othree/javascript-libraries-syntax.vim'
-" othree/javascript-libraries-syntax.vim {{{
+
 let g:used_javascript_libs = 'requirejs,underscore'
 " }}}
 
-Plugin 'jshint2.vim'
 " jshint2.vim = {{{
+Plugin 'jshint2.vim'
+
 "let jshint2_save=1
 
 " jshint validation
@@ -55,6 +59,12 @@ vnoremap <silent><F3> :lprevious<CR>
 
 "Plugin 'sidorares/node-vim-debugger'
 
+" YouCompleteMe = {{{
+Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+" }}}
+Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/term_for_vim && npm install'
 
 filetype plugin indent on     " required
 
@@ -62,9 +72,9 @@ filetype plugin indent on     " required
 " my config
 
 " node running {{{
-nnoremap <silent><F5> :!node %<CR>
-inoremap <silent><F5> :!node %<CR>
-vnoremap <silent><F5> :!node %<CR>
+nnoremap <silent><F5> :w<CR>:!node %<CR>
+inoremap <silent><F5> :w<CR>:!node %<CR>
+vnoremap <silent><F5> :w<CR>:!node %<CR>
 " }}}
 
 
