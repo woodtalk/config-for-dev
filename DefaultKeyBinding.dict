@@ -2,10 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!--caps lock-->
-    <key>\U21EA</key>
-    <!--escape-->
-    <string>insertText:\U238B</string>
+    <key>&#x0039;</key>
+    <array>
+        <string>insertText:</string>
+        <!--escape-->
+        <!--0x35-->
+        <string>&#x001B;</string>
+    </array>
 </dict>
 </plist>
 <!--http://xahlee.info/kbd/osx_keybinding_key_syntax.html-->
