@@ -23,10 +23,6 @@ map <C-n> :NERDTreeToggle<CR>
 Plugin 'tpope/vim-fugitive'
 
 "Plugin 'moll/vim-node'
-"Plugin 'myhere/vim-nodejs-complete'
-"Plugin 'ahayman/vim-nodejs-complete'
-" automatically open and close the popup menu / preview window
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 Plugin 'jelera/vim-javascript-syntax'
 
