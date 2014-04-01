@@ -11,6 +11,7 @@
     </array>
 </dict>
 </plist>
+<!--이 파일은 ./Library/KeyBindings/DefaultKeyBinding.dict에 위치해야함-->
 <!--http://xahlee.info/kbd/osx_keybinding_key_syntax.html-->
 <!-- before osx 10.9
 /* my keybindings */
