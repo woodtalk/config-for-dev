@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--caps lock-->
+    <key>\U21EA</key>
+    <!--escape-->
+    <string>insertText:\U238B</string>
+</dict>
+</plist>
+<!--http://xahlee.info/kbd/osx_keybinding_key_syntax.html-->
+<!-- before osx 10.9
+/* my keybindings */
+{
+"\U21EA" = ("insertText:", "\U238B"); /* caps lock to esc */
+}  
+-->
