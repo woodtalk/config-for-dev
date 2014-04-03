@@ -73,7 +73,8 @@ vnoremap <silent><F5> :w<CR>:!node %<CR>
 syntax on
 set nu
 set encoding=UTF-8
-set fileencodings=euc-kr,UTF-8
+set fileencoding=UTF-8
+set fileencodings=UTF-8,euc-kr
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
