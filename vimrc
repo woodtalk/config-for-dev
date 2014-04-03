@@ -55,11 +55,7 @@ vnoremap <silent><F3> :lprevious<CR>
 
 "Plugin 'sidorares/node-vim-debugger'
 
-" YouCompleteMe = {{{
 Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
-imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
-" }}}
 Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/term_for_vim && npm install'
 
 filetype plugin indent on     " required
