@@ -78,7 +78,7 @@ set fileencodings=UTF-8,euc-kr
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
+"set expandtab
 set ignorecase
 set smartcase
 set incsearch
