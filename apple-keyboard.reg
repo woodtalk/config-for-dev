@@ -1,0 +1,24 @@
+Windows Registry Editor Version 5.00
+; apple keyboard
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=-
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+00,00,00,00,\
+00,00,00,00,\
+05,00,00,00,\
+;
+;lctrl(001d)
+;lcommand,lwin(e05b)
+;rcommand,rwin(e05c)
+;roption,ralt(e038)
+;hankey(0072)
+;hanja(0071)
+;context menu(0040)
+;
+5b,e0,1d,00,\
+1d,00,5b,e0,\
+72,00,5c,e0,\
+37,e0,38,e0,\
+00,00,00,00
