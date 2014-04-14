@@ -83,6 +83,10 @@ set ignorecase
 set smartcase
 set incsearch
 
+set noimd
+"set imi=0or1or2
+"set ims=0or1or2
+
 set lines=60
 set columns=220
 
