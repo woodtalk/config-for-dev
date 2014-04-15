@@ -70,6 +70,7 @@ vnoremap <silent><F5> :w<CR>:!node %<CR>
 " }}}
 
 imap ;; <Esc>
+vmap ;; <Esc>
 
 syntax on
 set nu
