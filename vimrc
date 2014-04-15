@@ -69,6 +69,7 @@ inoremap <silent><F5> :w<CR>:!node %<CR>
 vnoremap <silent><F5> :w<CR>:!node %<CR>
 " }}}
 
+imap ;; <Esc>
 
 syntax on
 set nu
