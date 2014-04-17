@@ -15,7 +15,7 @@ Windows Registry Editor Version 5.00
 ; ESC(0001)
 ; CapsLock(003A)
 ; Left Control(001D)
-; Left Windows(E05E)
+; Left Windows(E05B)
 ; Left Alt(0038)
 ; Right1 Alt(E038)
 ; Right2 Windows(E05C)
@@ -29,9 +29,9 @@ Windows Registry Editor Version 5.00
 1D,00,3a,00,\
 ; ScrollLock(0046)-->0000
 00,00,46,00,\
-; Left Control(001D)-->Left Windows(E05E)
-5e,e0,1d,00,\
-; Left Windows(E05E)-->Left Alt(0038)
+; Left Control(001D)-->Left Windows(E05B)
+5b,e0,1d,00,\
+; Left Windows(E05B)-->Left Alt(0038)
 38,00,5b,e0,\
 ; Left Alt(0038)-->Left Control(001D)
 1d,00,38,00,\
