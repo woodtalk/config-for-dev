@@ -55,7 +55,10 @@ vnoremap <silent><F3> :lprevious<CR>
 
 "Plugin 'sidorares/node-vim-debugger'
 
+" YCM = {{{
 Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+" }}}
 Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/term_for_vim && npm install'
 
 filetype plugin indent on     " required
@@ -64,9 +67,9 @@ filetype plugin indent on     " required
 " my config
 
 " node running {{{
-nnoremap <silent><F5> :w<CR>:!node %<CR>
-inoremap <silent><F5> :w<CR>:!node %<CR>
-vnoremap <silent><F5> :w<CR>:!node %<CR>
+"nnoremap <silent><F5> :w<CR>:!node %<CR>
+"inoremap <silent><F5> :w<CR>:!node %<CR>
+"vnoremap <silent><F5> :w<CR>:!node %<CR>
 " }}}
 
 "imap ;; <Esc>
@@ -85,9 +88,9 @@ set ignorecase
 set smartcase
 set incsearch
 
-set noimd
-"set imi=0or1or2
-"set ims=0or1or2
+"set noimd
+set imi=1
+set ims=-1	" ims using of imi option
 
 set lines=60
 set columns=220
