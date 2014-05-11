@@ -59,7 +59,7 @@ vnoremap <silent><F3> :lprevious<CR>
 Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
 "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " }}}
-Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/term_for_vim && npm install'
+Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/tern_for_vim && npm install'
 
 filetype plugin indent on     " required
 
@@ -96,6 +96,7 @@ set lines=60
 set columns=220
 
 set background=dark
+colorscheme desert
 
 
 cd ~/git
