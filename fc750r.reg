@@ -27,8 +27,6 @@ Windows Registry Editor Version 5.00
 ;
 ; CapsLock(003A)-->Left Windows(E05B)
 5b,e0,3a,00,\
-; ScrollLock(0046)-->0000
-00,00,46,00,\
 ; Left Windows(E05B)-->Left Alt(0038)
 38,00,5b,e0,\
 ; Left Alt(0038)-->Left Control(001D)
