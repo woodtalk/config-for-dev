@@ -10,7 +10,7 @@ Windows Registry Editor Version 5.00
 ; Scancode Map Version Info
 00,00,00,00,\
 ; Number of DWORDS to follow
-06,00,00,00,\
+05,00,00,00,\
 ;
 ; ESC(0001)
 ; CapsLock(003A)
