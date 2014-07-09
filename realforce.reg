@@ -14,6 +14,8 @@ Windows Registry Editor Version 5.00
 ;
 ; ESC(0001)
 ; CapsLock(003A)
+; Backspace(000E)
+; Backslash(002B)
 ; Left Control(001D)
 ; Left Windows(E05B)
 ; Left Alt(0038)
@@ -25,6 +27,10 @@ Windows Registry Editor Version 5.00
 ; hankey(0072)
 ; hanjakey(0071)
 ;
+; Backspace(000E)-->Backslash(002B)
+2b,00,0e,00,\
+; Backslash(002B)-->Backspace(000E)
+0e,00,2b,00,\
 ; Left Windows(E05B)-->Left Alt(0038)
 38,00,5b,e0,\
 ; Left Alt(0038)-->Left Control(001D)
