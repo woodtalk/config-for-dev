@@ -21,9 +21,9 @@ Windows Registry Editor Version 5.00
 ; hankey(0072)
 ; hanjakey(0071)
 ;
-; Left Windows(E05B)-->Left Alt(0038)
-38,00,5b,e0,\
 ; Left Alt(0038)-->Left Control(001D)
 1d,00,38,00,\
+; Left Windows(E05B)-->Left Alt(0038)
+38,00,5b,e0,\
 ; Null Termination
 00,00,00,00
