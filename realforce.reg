@@ -27,17 +27,9 @@ Windows Registry Editor Version 5.00
 ; hankey(0072)
 ; hanjakey(0071)
 ;
-; `(0029)-->ESC(0001)
-01,00,29,00,\
-; Backspace(000E)-->Backslash(002B)
-2b,00,0e,00,\
-; Backslash(002B)-->Backspace(000E)
-0e,00,2b,00,\
 ; Left Windows(E05B)-->Left Alt(0038)
 38,00,5b,e0,\
 ; Left Alt(0038)-->Left Control(001D)
 1d,00,38,00,\
-; Right4 Ctrl(E01D)-->`(0029)
-29,00,1d,e0,\
 ; Null Termination
 00,00,00,00
