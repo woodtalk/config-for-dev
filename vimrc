@@ -87,6 +87,7 @@ set softtabstop=4
 set ignorecase
 set smartcase
 set incsearch
+set hlsearch
 
 "set noimd
 set imi=1
