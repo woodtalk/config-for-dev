@@ -10,8 +10,10 @@ brew로 제일 처음 할 일은 git을 설치하는 일
 git clone https://github.com/woodtalk/config-for-dev
 
 mac이라면 아래의 명령을 입력한다.
+{{{
 ln -s ~/git-workspace/config-for-dev/bash_profile ~/.bash_profile
 ln -s ~/git-workspace/config-for/dev/vimrc ~/.vimrc
+}}}
 
 vim의 경우 예전에는 macvim이라는 것을 써야 했는데
 현재는 vim을 설치하여도 최신 버전의 vim이 설치되는 것 같다.
