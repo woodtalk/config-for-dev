@@ -10,20 +10,28 @@ Windows Registry Editor Version 5.00
 ; Scancode Map Version Info
 00,00,00,00,\
 ; Number of DWORDS to follow
-03,00,00,00,\
+04,00,00,00,\
 ;
 ; ESC(0001)
+; CapsLock(003A)
+; Backspace(000E)
+; Backslash(002B)
 ; Left Control(001D)
 ; Left Windows(E05B)
 ; Left Alt(0038)
 ; Right Alt(E038)
 ; Right Windows(E05C)
+; Right Context Menu(E05D)
+; Right Ctrl(E01D)
+; ScrLk(0046)
 ; hankey(0072)
 ; hanjakey(0071)
 ;
-; Left Alt(0038)-->Left Control(001D)
-1d,00,38,00,\
-; Left Windows(E05B)-->Left Alt(0038)
-38,00,5b,e0,\
+; Left Windows(E05B)-->Left Control(001D)
+1d,00,5b,e0,\
+; Right Windows(E05C)-->Right Alt(E038)
+38,e0,5c,e0,\
+; Right Alt(E038)-->Right Windows(E05C)
+5c,e0,38,e0,\
 ; Null Termination
 00,00,00,00
