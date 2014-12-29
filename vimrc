@@ -8,11 +8,11 @@ set nocompatible              " be iMproved, required
 "endif
 filetype off                  " required
 
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " The-NERD-tree = {{{
 Plugin 'The-NERD-tree'
@@ -61,6 +61,8 @@ Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bun
 " }}}
 Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/tern_for_vim && npm install'
 
+call vundle#end()
+
 filetype plugin indent on     " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,4 +102,4 @@ set background=dark
 colorscheme desert
 
 
-cd ~/git
+"cd ~/git
