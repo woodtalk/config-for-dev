@@ -33,3 +33,29 @@ vim 에서 vundle이라는 plugin manager를 사용한다.
 이것에 대한 정보는 http://github.com/gmarik/vundle 에서 확인해보자.  
 
 이상 현재까지 생각나는 것을 적어 보았다.
+
+****
+
+# vi 단축키 관련
+## insert mode에서...
+* ctrl + [ 은 esc
+* ctrl + h 은 backspace
+* ctrl + w 은 이전 단어 지우기
+
+## 그냥 모드애서 insert mode로 전환하는 다양한 방법
+* i : 현재 커서에서 insert
+* a : 현재 커서 다음 글자에서 insert
+* I : 줄 앞단에서 insert
+* A : 줄 맨 끝에서 insert
+* o : 현재 커서의 아래 쪽에 줄 추가 후 insert
+* O : 현재 커서의 윗 쪽에 줄 추가 후 insert
+
+
+ctrl + v 를 할 경우 수평 선택이 가능하다.  
+I는 그 상태에서 입력 가능 입력한 후 esc를 누르면 수평 입력이 가능하다.
+
+visual mode에서 복사(y)한 내용을 search mode(/)에서 사용하는 방법은 ctrl + r + 0를 하면 된다.  
+ctrl + r에는 기타 다른 것도 사용할 수 있다. % # / : 등등  
+기타 자세한 내용은 :help c_CTRL-R로 알 수 있다.  
+출처 : http://seorenn.blogspot.kr/2011/04/vim.html?m=1
+
