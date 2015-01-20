@@ -42,7 +42,7 @@ vim 에서 vundle이라는 plugin manager를 사용한다.
 * ctrl + h 은 backspace
 * ctrl + w 은 이전 단어 지우기
 
-## 그냥 모드애서 insert mode로 전환하는 다양한 방법
+## 그냥 모드에서 insert mode로 전환하는 다양한 방법
 * i : 현재 커서에서 insert
 * a : 현재 커서 다음 글자에서 insert
 * I : 줄 앞단에서 insert
