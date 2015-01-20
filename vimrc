@@ -79,13 +79,16 @@ filetype plugin indent on     " required
 
 syntax on
 set nu
+
 set encoding=UTF-8
 set fileencoding=UTF-8
 set fileencodings=UTF-8,euc-kr
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 "set expandtab
+
 set ignorecase
 set smartcase
 set incsearch
@@ -101,5 +104,4 @@ set columns=220
 set background=dark
 colorscheme desert
 
-
-"cd ~/git
+"cd ~/git-workspace
