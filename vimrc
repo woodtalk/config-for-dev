@@ -98,8 +98,9 @@ set hlsearch
 set imi=1
 set ims=-1	" ims using of imi option
 
-set lines=60
-set columns=220
+" font name melo and font size 12
+"set lines=50
+"set columns=190
 
 set background=dark
 colorscheme desert
