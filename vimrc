@@ -109,6 +109,9 @@ if has('win32') || has('win64')
 	set lines=50
 	set columns=190
 	set guifont=Consolas:h12:cANSI
+
+	cd d:\git-workingspace
+
 elseif has('macunix')
 " font name melo and font size 12
 "set lines=50
