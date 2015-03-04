@@ -2,6 +2,7 @@
 " vudle.vim setting
 " http://github.com/gmarik/vundle
 
+				if !has('win32') && !has('win64')
 set nocompatible              " be iMproved, required
 "if has('macunix')
 "    filetype on
@@ -64,6 +65,7 @@ Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/tern_for_vim && npm
 call vundle#end()
 
 filetype plugin indent on     " required
+				endif	" if !has('win32') && !has('win64')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my config
@@ -98,11 +100,17 @@ set hlsearch
 set imi=1
 set ims=-1	" ims using of imi option
 
-" font name melo and font size 12
-"set lines=50
-"set columns=190
-
 set background=dark
 colorscheme desert
 
 "cd ~/git-workspace
+
+if has('win32') || has('win64')
+	set lines=50
+	set columns=190
+	set guifont=Consolas:h12:cANSI
+elseif has('macunix')
+" font name melo and font size 12
+"set lines=50
+"set columns=190
+endif
