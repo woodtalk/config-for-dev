@@ -106,6 +106,8 @@ colorscheme desert
 "cd ~/git-workspace
 
 if has('win32') || has('win64')
+	set encoding=cp949
+
 	set lines=50
 	set columns=190
 	set guifont=Consolas:h12:cANSI
