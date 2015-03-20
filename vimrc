@@ -2,70 +2,44 @@
 " vudle.vim setting
 " http://github.com/gmarik/vundle
 
-				if !has('win32') && !has('win64')
 set nocompatible              " be iMproved, required
 "if has('macunix')
 "    filetype on
 "endif
 filetype off                  " required
 
+				if has('win32') || has('win64')
+set runtimepath+=~/vimfiles/bundle/Vundle.vim
+let path='~/vimfiles/bundle'
+call vundle#begin(path)
+				else " mac or linux
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+				endif
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " The-NERD-tree = {{{
 Plugin 'The-NERD-tree'
-
 map <C-n> :NERDTreeToggle<CR>
 " }}}
 
-Plugin 'tpope/vim-fugitive'
+"Plugin 'jason0x43/vim-js-inden'
 
-"Plugin 'moll/vim-node'
+Plugin 'clausreinke/typescript-tools'
 
-Plugin 'jelera/vim-javascript-syntax'
-
-" javascript-libraries-syntax.vim = {{{
-Plugin 'othree/javascript-libraries-syntax.vim'
-
-let g:used_javascript_libs = 'requirejs,underscore'
+" typescript-vim = {{{
+Plugin 'leafgarland/typescript-vim'
+let g:typescript_compiler_options = '-sourcemap'
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 " }}}
 
-" jshint2.vim = {{{
-Plugin 'jshint2.vim'
-
-"let jshint2_save=1
-
-" jshint validation
-nnoremap <silent><F1> :JSHint<CR>
-inoremap <silent><F1> <C-O>:JSHint<CR>
-vnoremap <silent><F1> :JSHint<CR>
-
-" show next jshint error
-nnoremap <silent><F2> :lnext<CR>
-inoremap <silent><F2> <C-O>:lnext<CR>
-vnoremap <silent><F2> :lnext<CR>
-
-" show previous jshint error
-nnoremap <silent><F3> :lprevious<CR>
-inoremap <silent><F3> <C-O>:lprevious<CR>
-vnoremap <silent><F3> :lprevious<CR>
-" }}}
-
-"Plugin 'sidorares/node-vim-debugger'
-
-" YCM = {{{
-Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
-"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-" }}}
-Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/tern_for_vim && npm install'
 
 call vundle#end()
 
 filetype plugin indent on     " required
-				endif	" if !has('win32') && !has('win64')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my config

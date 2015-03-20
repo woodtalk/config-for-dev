@@ -32,6 +32,16 @@ which vi
 vim 에서 vundle이라는 plugin manager를 사용한다.  
 이것에 대한 정보는 http://github.com/gmarik/vundle 에서 확인해보자.  
 
+vundle 윈도우에서 써보자
+git은 당연히 깔린 상태여야 한다.
+그리고 왠지 path에 등록해야할 꺼 같다.
+https://github.com/gmarik/Vundle.vim/wiki/vundle-for-windows
+여기에 설정하는 것이 있는데, windows에는 .vim 폴더가 없어서 거기에 대한 보안이 있는 것 같다.
+~~~~
+mklink /d vimfiles d:\Users\woodtalk\vimfiles
+~~~~
+위는 내가 .vim 폴더 대신 만든 vimfiles에 대한 심볼릭 링크 만드는 방법이다.
+
 이상 현재까지 생각나는 것을 적어 보았다.
 
 ****
