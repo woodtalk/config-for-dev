@@ -25,17 +25,6 @@ Plugin 'The-NERD-tree'
 map <C-n> :NERDTreeToggle<CR>
 " }}}
 
-"Plugin 'jason0x43/vim-js-inden'
-
-Plugin 'clausreinke/typescript-tools'
-
-" typescript-vim = {{{
-Plugin 'leafgarland/typescript-vim'
-let g:typescript_compiler_options = '-sourcemap'
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-" }}}
-
 
 call vundle#end()
 
@@ -50,11 +39,13 @@ filetype plugin indent on     " required
 "vnoremap <silent><F5> :w<CR>:!node %<CR>
 " }}}
 
-"imap ;; <Esc>
-"vmap ;; <Esc>
 
 syntax on
-set nu
+
+
+
+set number
+
 
 set encoding=UTF-8
 set fileencoding=UTF-8
@@ -71,8 +62,13 @@ set incsearch
 set hlsearch
 
 "set noimd
-set imi=1
-set ims=-1	" ims using of imi option
+set iminsert=1
+set imsearch=-1	" ims using of imi option
+
+
+set clipboard=unnamed
+
+
 
 set background=dark
 colorscheme desert
@@ -89,7 +85,5 @@ if has('win32') || has('win64')
 	cd d:\git-workingspace
 
 elseif has('macunix')
-" font name melo and font size 12
-"set lines=50
-"set columns=190
+" font name menlo and font size 12
 endif
