@@ -32,6 +32,7 @@ filetype plugin indent on     " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my config
+" http://github.com/woodtalk/config-for-dev
 
 " node running {{{
 "nnoremap <silent><F5> :w<CR>:!node %<CR>
@@ -56,6 +57,8 @@ set shiftwidth=4
 set softtabstop=4
 "set expandtab
 
+set ruler
+
 set ignorecase
 set smartcase
 set incsearch
@@ -65,10 +68,9 @@ set hlsearch
 set iminsert=1
 set imsearch=-1	" ims using of imi option
 
-
 set clipboard=unnamed
 
-
+set scrolloff=5
 
 set background=dark
 colorscheme desert
@@ -86,4 +88,10 @@ if has('win32') || has('win64')
 
 elseif has('macunix')
 " font name menlo and font size 12
+" https://github.com/vovkasm/input-source-switcher
+" http://yisangwook.tumblr.com/post/106780445189/vim-insert-mode-keyboard-switch
+	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
+		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.US')
+	endif
 endif
+
