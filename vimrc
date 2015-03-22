@@ -25,7 +25,6 @@ Plugin 'The-NERD-tree'
 map <C-n> :NERDTreeToggle<CR>
 " }}}
 
-
 call vundle#end()
 
 filetype plugin indent on     " required

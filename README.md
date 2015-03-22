@@ -42,6 +42,17 @@ mklink /d vimfiles d:\Users\woodtalk\vimfiles
 ~~~~
 위는 내가 .vim 폴더 대신 만든 vimfiles에 대한 심볼릭 링크 만드는 방법이다.
 
+맥에서 터미널에서 vim에서 esc로 영어로 빠져나올라면 아래의 과정을 거쳐야하고 그리고 같이 커밋된 vimrc 파일을 확인해보면 됩니다.
+~~~~
+git clone https://github.com/vovkasm/input-source-switcher.git
+cd input-source-switcher
+mkdir build
+cd build
+cmake ..
+make
+make install
+~~~~
+
 이상 현재까지 생각나는 것을 적어 보았다.
 
 ****
