@@ -134,6 +134,20 @@ set fileencoings
 위의 명령으로 BOM을 추가 제거할 수 있다.
 
 
+## JSON pretty formatting
+
+```
+:%!python -m json.tool
+```
+
+추가로 현재 특정 파일로 syntax변경하여 보고 싶으면
+
+```
+:set syntax=json
+```
+
+
+
 ## 기타
 
 ctrl + v 를 할 경우 수평 선택이 가능하다.  
