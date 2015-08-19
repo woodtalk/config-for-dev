@@ -74,10 +74,8 @@ filetype plugin indent on     " required
 
 syntax on
 
-
-
 set number
-
+"set list
 
 set encoding=UTF-8
 set fileencoding=UTF-8
@@ -95,21 +93,20 @@ set smartcase
 set incsearch
 set hlsearch
 
+set scrolloff=5
+
 "set noimd
 set iminsert=1
 set imsearch=-1	" ims using of imi option
 
 set clipboard=unnamed
 
-set scrolloff=5
+set backspace=indent,eol,start
 
 set background=dark
 "colorscheme desert
 colorscheme jellybeans
 
-"cd ~/git-workspace
-
-set backspace=indent,eol,start
 
 if has('win32') || has('win64')
 	set encoding=cp949
@@ -121,11 +118,13 @@ if has('win32') || has('win64')
 	cd d:\git-workingspace
 
 elseif has('macunix')
-" font name menlo and font size 12
-" https://github.com/vovkasm/input-source-switcher
-" http://yisangwook.tumblr.com/post/106780445189/vim-insert-mode-keyboard-switch
+	" font name menlo and font size 12
+	" https://github.com/vovkasm/input-source-switcher
+	" http://yisangwook.tumblr.com/post/106780445189/vim-insert-mode-keyboard-switch
 	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
 		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.US')
 	endif
+
+	"cd ~/git-workspace
 endif
 
