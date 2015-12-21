@@ -6,16 +6,13 @@ Windows Registry Editor Version 5.00
 "OverrideKeyboardIdentifier"="PCAT_103KEY"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:\
 ; Scancode Map Header
 00,00,00,00,\
 ; Scancode Map Version Info
 00,00,00,00,\
 ; Number of DWORDS to follow
-05,00,00,00,\
+03,00,00,00,\
 ;
 ; ESC(0001)
 ; CapsLock(003A)
@@ -40,7 +37,6 @@ Windows Registry Editor Version 5.00
 72,00,5c,e0,\
 ; Right Alt(E038)-->Right Windows(E05C)
 5c,e0,38,e0,\
-; Right Alt(E038)-->Right Windows(E05C)
-5c,e0,38,e0,\
+;
 ; Null Termination
 00,00,00,00
