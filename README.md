@@ -146,6 +146,20 @@ set fileencoings
 :set syntax=json
 ```
 
+```^M```(carriage returns)을 확인하고 싶다?
+
+```
+:e ++ff=unix
+:e ++fileformat=unix
+```
+
+```^M```(carriage returns)을 제거하고 싶다?
+
+```
+:%s/^M//g
+:%s/{ctrl+v}{ctrl+m}//g
+```
+
 
 
 ## 기타
@@ -157,4 +171,14 @@ visual mode에서 복사(y)한 내용을 search mode(/)에서 사용하는 방�
 ctrl + r에는 기타 다른 것도 사용할 수 있다. % # / : 등등  
 기타 자세한 내용은 :help c_CTRL-R로 알 수 있다.  
 출처 : [http://seorenn.blogspot.kr/2011/04/vim.html?m=1]
+
+
+## git
+
+git에서 clone 및 pull에서 자꾸 ```^M```(carriage returns)을 붙혀서 배포한다?
+```.gitattributes```에 다음을 넣어 커밋하자
+
+```
+*.sh text eol=lf
+```
 
