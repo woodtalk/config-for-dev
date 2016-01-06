@@ -6,23 +6,20 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 				if has('win32') || has('win64')
-set runtimepath+=~/vimfiles/bundle/Vundle.vim
-let path='~/vimfiles/bundle'
-call vundle#begin(path)
+set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
+call vundle#begin('$HOME/vimfiles/bundle')
 				else " mac or linux
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 				endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
 " The-NERD-tree = {{{
-Plugin 'The-NERD-tree'
-map <C-n> :NERDTreeToggle<CR>
+"Plugin 'The-NERD-tree'
+"map <C-n> :NERDTreeToggle<CR>
 " }}}
 
-Plugin 'tComment'
+"Plugin 'tComment'
 
 " Plugin 'jelera/vim-javascript-syntax'
 "
@@ -114,8 +111,6 @@ if has('win32') || has('win64')
 	set lines=50
 	set columns=190
 	set guifont=Consolas:h12:cANSI
-
-	cd d:\git-workingspace
 
 elseif has('macunix')
 	" font name menlo and font size 12
