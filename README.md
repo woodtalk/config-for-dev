@@ -116,7 +116,6 @@ make install
 
 ```
 set fenc
-set enc
 ```
 
 vim에서 파일을 읽을 때 인코딩 우선순위 설정 및 확인은
