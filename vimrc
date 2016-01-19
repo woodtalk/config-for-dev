@@ -13,6 +13,8 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 				endif
 
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " The-NERD-tree = {{{
 "Plugin 'The-NERD-tree'
