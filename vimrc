@@ -1,3 +1,4 @@
+						if has('win32unix') == 0	" mingw or cygwin Plugin 등 취소
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vudle.vim setting
 " http://github.com/gmarik/vundle
@@ -121,7 +122,6 @@ elseif has('macunix')
 	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
 		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.US')
 	endif
-
-	"cd ~/git-workspace
 endif
 
+						endif
