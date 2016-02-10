@@ -1,4 +1,6 @@
-						if has('win32unix') == 0	" mingw or cygwin Plugin 등 취소
+" gvim 7.4
+" macvim 7.4
+						if (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vudle.vim setting
 " http://github.com/gmarik/vundle
@@ -60,17 +62,11 @@ call vundle#end()
 
 filetype plugin indent on     " required
 
+						endif " if (has('win32unix') || has('win32unix')) == 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " my config
 " http://github.com/woodtalk/config-for-dev
-
-" node running {{{
-"nnoremap <silent><F5> :w<CR>:!node %<CR>
-"inoremap <silent><F5> :w<CR>:!node %<CR>
-"vnoremap <silent><F5> :w<CR>:!node %<CR>
-" }}}
-
 
 syntax on
 
@@ -103,25 +99,34 @@ set clipboard=unnamed
 
 set backspace=indent,eol,start
 
-set background=dark
 "colorscheme desert
-colorscheme jellybeans
+set background=dark
+silent! colorscheme jellybeans
 
 
-if has('win32') || has('win64')
-	set encoding=cp949
+if (has('win32') || has('win64')) && has('gui_running')
 
-	set lines=50
-	set columns=190
+	" 윈도우에서 한글 메뉴 깨짐 현상 수정
+	source $VIMRUNTIME/delmenu.vim
+	set langmenu=ko_kr.UTF-8
+
+	set guioptions-=T " no toolbar
+
+	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
+
 	set guifont=Consolas:h12:cANSI
+	set guifontwide=Dotumche:h11:cDEFAULT
+
+	set lines=45
+	set columns=190
 
 elseif has('macunix')
+
 	" font name menlo and font size 12
 	" https://github.com/vovkasm/input-source-switcher
 	" http://yisangwook.tumblr.com/post/106780445189/vim-insert-mode-keyboard-switch
 	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
 		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.US')
 	endif
-endif
 
-						endif
+endif
