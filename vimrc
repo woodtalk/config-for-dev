@@ -104,18 +104,19 @@ set background=dark
 silent! colorscheme jellybeans
 
 
-if (has('win32') || has('win64')) && has('gui_running')
+if has('gui_running') && (has('win32') || has('win64') || has('gui win32'))
 
 	" 윈도우에서 한글 메뉴 깨짐 현상 수정
 	source $VIMRUNTIME/delmenu.vim
 	set langmenu=ko_kr.UTF-8
 
-	set guioptions-=T " no toolbar
+	"set guioptions-=T " no toolbar
 
 	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
 
-	set guifont=Consolas:h12:cANSI
-	set guifontwide=Dotumche:h11:cDEFAULT
+	"set guifontwide=Malgun\ Gothic:h10:cDEFAULT
+	set guifont=Consolas:h11:cANSI
+	"set guifont=Lucida\ Console:h10
 
 	set lines=45
 	set columns=190
