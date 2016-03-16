@@ -13,7 +13,7 @@ mac이라면 아래의 명령을 입력한다.
 
 ```
 ln -s ~/git-workspace/config-for-dev/bash_profile ~/.bash_profile
-ln -s ~/git-workspace/config-for/dev/vimrc ~/.vimrc
+ln -s ~/git-workspace/config-for-dev/vimrc ~/.vimrc
 ```
 
 vim의 경우 예전에는 macvim이라는 것을 써야 했는데  
@@ -32,6 +32,12 @@ which vi
 ```
 
 를 실행하면 이유를 알 수 있다.
+
+windows라면 아래의 명령을 입력한다.
+
+```
+mklink %userprofile%\_vimrc ...gitpath\config-for-dev\vimrc
+```
 
 vim 에서 vundle이라는 plugin manager를 사용한다.  
 이것에 대한 정보는 http://github.com/gmarik/vundle 에서 확인해보자.  

@@ -9,8 +9,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 				if has('win32') || has('win64')
-set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
-call vundle#begin('$HOME/vimfiles/bundle')
+set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim/
+call vundle#begin('$USERPROFILE/vimfiles/bundle')
 				else " mac or linux
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
