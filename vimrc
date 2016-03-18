@@ -114,12 +114,14 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32'))
 
 	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
 
-	"set guifontwide=Malgun\ Gothic:h10:cDEFAULT
-	set guifont=Consolas:h11:cANSI
-	"set guifont=Lucida\ Console:h10
+	set guifont=Consolas:h10:cANSI
+	set guifontwide=Dotumche:h9:cDEFAULT
 
 	set lines=45
 	set columns=190
+
+	" 회사용 encoding 수정
+	set fileencodings=cp949,UTF-8
 
 elseif has('macunix')
 
