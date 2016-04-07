@@ -20,41 +20,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " The-NERD-tree = {{{
-"Plugin 'The-NERD-tree'
-"map <C-n> :NERDTreeToggle<CR>
+Plugin 'The-NERD-tree'
+map <C-n> :NERDTreeToggle<CR>
 " }}}
-
-"Plugin 'tComment'
-
-" Plugin 'jelera/vim-javascript-syntax'
-"
-"
-" " jshint2.vim = {{{
-" Plugin 'jshint2.vim'
-" "let jshint2_save=1
-"
-" " jshint validation
-" nnoremap <silent><F1> :JSHint<CR>
-" inoremap <silent><F1> <C-O>:JSHint<CR>
-" vnoremap <silent><F1> :JSHint<CR>
-"
-" " show next jshint error
-" nnoremap <silent><F2> :lnext<CR>
-" inoremap <silent><F2> <C-O>:lnext<CR>
-" vnoremap <silent><F2> :lnext<CR>
-"
-" " show previous jshint error
-" nnoremap <silent><F3> :lprevious<CR>
-" inoremap <silent><F3> <C-O>:lprevious<CR>
-" vnoremap <silent><F3> :lprevious<CR>
-" " }}}
-"
-" " YCM = {{{
-" Plugin 'Valloric/YouCompleteMe' " install 'cmake'(brew), must run 'cd ~/.vim/bundle/YouCompleteMe && ./install.sh'
-" "nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-" " }}}
-"
-" Plugin 'marijnh/tern_for_vim'   " must run 'cd ~/.vim/bundle/tern_for_vim && npm install'
 
 Plugin 'nanotech/jellybeans.vim'
 
@@ -119,6 +87,8 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32'))
 
 	set lines=45
 	set columns=190
+
+	cd $USERPROFILE/vimfiles
 
 	" 회사용 encoding 수정
 	set fileencodings=cp949,UTF-8
