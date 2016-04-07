@@ -72,18 +72,18 @@ set background=dark
 silent! colorscheme jellybeans
 
 
-if has('gui_running') && (has('win32') || has('win64') || has('gui win32'))
+if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
 
 	" 윈도우에서 한글 메뉴 깨짐 현상 수정
-	source $VIMRUNTIME/delmenu.vim
+	source $VIMRUNTIME\delmenu.vim
 	set langmenu=ko_kr.UTF-8
 
-	"set guioptions-=T " no toolbar
+	set guioptions-=T " no toolbar
 
 	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
 
-	set guifont=Consolas:h10:cANSI
 	set guifontwide=Dotumche:h9:cDEFAULT
+	set guifont=Consolas:h10:cANSI
 
 	set lines=45
 	set columns=190
@@ -91,7 +91,7 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32'))
 	cd $USERPROFILE/vimfiles
 
 	" 회사용 encoding 수정
-	set fileencodings=cp949,UTF-8
+	"set fileencodings=cp949,UTF-8
 
 elseif has('macunix')
 

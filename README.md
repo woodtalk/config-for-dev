@@ -93,6 +93,11 @@ make install
 * t문자 : 문자의 앞위치로 이동
 * T문자 : 백워드방향으로 문자의 앞위치로 이동
 
+## clipboard / registers 관련 팁
+* ```"{$character}y``` : {$character}에 clipboard에 저장함
+* ```"{$character}p``` : {$character}에 clipboard에 저장된 값 paste
+* 명령어 모드에서 ```:reg```는 현재 등록(regist)된 모든 clipboard 값을 확인할 수 있음
+
 
 ## 만약에 binary로 파일을 보고 싶으면
 
