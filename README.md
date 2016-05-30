@@ -192,3 +192,32 @@ git에서 clone 및 pull에서 자꾸 ```^M```(carriage returns)을 붙혀서 �
 *.sh text eol=lf
 ```
 
+### merge와 rebase의 차이점
+* merge는 branch를 묶는 것
+* rebase는 branch를 commit(or branch)에 얹는 것
+
+## svn
+
+### svn의 모든 ignore 얻는 법
+```
+svn propget -R svn:ignore . > ignore-list.txt
+svn propget -R svn:global-ignores . >> ignore-list.txt
+```
+
+### svn:ignore list(파일 형식)을 일괄 적용하는 방법
+```
+*.class
+*.jar
+*.war
+target/
+.settings/
+.metadata
+bin
+```
+
+위의 같이 ignore list가 txt파일로 존재한다고 가정
+
+```
+svn propset svn:ignore -RF svn-ignore.txt .
+```
+
