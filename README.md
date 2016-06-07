@@ -228,3 +228,9 @@ svn propset svn:ignore -F svn-ignore.txt .
 for /f "usebackq tokens=1*" %a in (`svn status`) do (if "%a"=="!" (svn delete "%b") else (if "%a"=="?" (svn add "%b")))
 ```
 
+### 키타 유용한 명령(windows버전)
+```batch
+rem &&은 왼쪽 명령이 0(성공)일 때만 오른쪽 명령을 수행
+rem https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/ntcmds_shelloverview.mspx?mfr=true
+set LC_MESSAGES=C && for /f "tokens=2" %%i in ('svn info ^| find "Revision"') do set rev=%%i
+```
