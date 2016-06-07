@@ -199,7 +199,7 @@ git에서 clone 및 pull에서 자꾸 ```^M```(carriage returns)을 붙혀서 �
 ## svn
 
 ### svn의 모든 ignore 얻는 법
-```
+```bash
 svn propget -R svn:ignore . > ignore-list.txt
 svn propget -R svn:global-ignores . >> ignore-list.txt
 ```
@@ -217,14 +217,14 @@ bin
 
 위의 같이 ignore list가 txt파일로 존재한다고 가정
 
-```
+```bash
 svn propset svn:global-ignores -F svn-ignore.txt .
 # 특정 폴더만이면
 svn propset svn:ignore -F svn-ignore.txt .
 ```
 
-### windows에서 svn command line으로 unsolved/missing을 delete/add로 바꾸기
-```
+### windows에서 svn command line으로 unresolved/missing을 delete/add로 바꾸기
+```batch
 for /f "usebackq tokens=1*" %a in (`svn status`) do (if "%a"=="!" (svn delete "%b") else (if "%a"=="?" (svn add "%b")))
 ```
 
