@@ -219,7 +219,12 @@ bin
 
 ```
 svn propset svn:global-ignores -F svn-ignore.txt .
-#특정 폴더만이면
+# 특정 폴더만이면
 svn propset svn:ignore -F svn-ignore.txt .
+```
+
+### windows에서 svn command line으로 unsolved/missing을 delete/add로 바꾸기
+```
+for /f "usebackq tokens=1*" %a in (`svn status`) do (if "%a"=="!" (svn delete "%b") else (if "%a"=="?" (svn add "%b")))
 ```
 
