@@ -209,13 +209,9 @@ svn propget -R svn:global-ignores . >> ignore-list.txt
 *.class
 *.jar
 *.war
-target/
-.settings/
-.metadata
-bin
 ```
 
-위의 같이 ignore list가 txt파일로 존재한다고 가정
+위의 같이 ignore list(디렉토리는 안됨)가 txt파일로 존재한다고 가정
 
 ```bash
 svn propset svn:global-ignores -F svn-ignore.txt .
