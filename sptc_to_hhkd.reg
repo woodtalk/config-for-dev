@@ -12,7 +12,7 @@ Windows Registry Editor Version 5.00
 ; Scancode Map Version Info
 00,00,00,00,\
 ; Number of DWORDS to follow
-0a,00,00,00,\
+07,00,00,00,\
 ;
 ; ESC(0001)
 ; `(0029)
@@ -33,22 +33,12 @@ Windows Registry Editor Version 5.00
 ; HHKB Fn + Delete(E045) ; ?
 ; HHKB Fn + `;Del(E053) ; ?
 ;
-; Esc(0001)-->Backslash(002B)
-2b,00,01,00,\
+; Esc(0001)-->`(0029)
+29,00,01,00,\
 ; `(0029)-->Esc(0001)
 01,00,29,00,\
-; Backspace(000E)-->`(0029)
-29,00,0e,00,\
-;
-; Backslash(002B)-->Backspace(000E)
-0e,00,2b,00,\
-;
 ; CapsLock(003A)-->Left Control(001D)
 1d,00,3a,00,\
-;
-; CapsLock(003A)-->Left Control(001D)
-1d,00,3a,00,\
-;
 ; Left Ctrl(001D)-->Left Windows(E05B)
 5b,e0,1d,00,\
 ; Left Windows(E05B)-->Left Alt(0038)
