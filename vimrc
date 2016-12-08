@@ -93,6 +93,8 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	" 회사용 encoding 수정
 	"set fileencodings=cp949,UTF-8
 
+	set autochdir
+
 elseif has('macunix')
 
 	" font name menlo and font size 12
