@@ -89,8 +89,6 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	set lines=45
 	set columns=190
 
-	cd $USERPROFILE/vimfiles
-
 	" 회사용 encoding 수정
 	"set fileencodings=cp949,UTF-8
 
