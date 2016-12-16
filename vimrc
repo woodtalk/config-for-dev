@@ -1,4 +1,4 @@
-" gvim 7.4
+" gvim 8.0.0003
 " macvim 7.4
 						if (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,6 +71,7 @@ set backspace=indent,eol,start
 set background=dark
 silent! colorscheme jellybeans
 
+set autochdir
 
 if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
 
@@ -93,7 +94,6 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	" 회사용 encoding 수정
 	"set fileencodings=cp949,UTF-8
 
-	set autochdir
 
 elseif has('macunix')
 
