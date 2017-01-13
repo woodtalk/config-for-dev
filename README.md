@@ -182,6 +182,12 @@ set fileencoings
 * 매크로를 여러번 실행하고 싶으면 ```[횟수]@[매크로 명]```같이 입력해 주면 됨
 * 여기[http://forcecore.tistory.com/1255]는 매크로를 아예 저장하는 방법이 있네
 
+## 대소문자 관련해서
+ * 선택 범위 모두 대문자 : U
+ * 선택 범위 모두 소문자 : u
+ * 선택 범위 모두 대소문자 반전 : ~
+ * 찾기 바꾸기에서 특정 문자 대문자로 : ```\U\1\E```
+ * 찾기 바꾸기에서 특정 문자 소문자로 : ```\L\1\E```
 
 
 ## 기타
@@ -195,7 +201,7 @@ ctrl + r에는 기타 다른 것도 사용할 수 있다. % # / : 등등
 출처 : [http://seorenn.blogspot.kr/2011/04/vim.html?m=1]
 
 
-## git
+# git
 
 git에서 clone 및 pull에서 자꾸 ```^M```(carriage returns)을 붙혀서 배포한다?
 ```.gitattributes```에 다음을 넣어 커밋하자
@@ -204,19 +210,19 @@ git에서 clone 및 pull에서 자꾸 ```^M```(carriage returns)을 붙혀서 �
 *.sh text eol=lf
 ```
 
-### merge와 rebase의 차이점
+## merge와 rebase의 차이점
 * merge는 branch를 묶는 것
 * rebase는 branch를 commit(or branch)에 얹는 것
 
-## svn
+# svn
 
-### svn의 모든 ignore 얻는 법
+## svn의 모든 ignore 얻는 법
 ```bash
 svn propget -R svn:ignore . > ignore-list.txt
 svn propget -R svn:global-ignores . >> ignore-list.txt
 ```
 
-### svn:ignore list(파일 형식)을 일괄 적용하는 방법
+## svn:ignore list(파일 형식)을 일괄 적용하는 방법
 ```
 *.class
 *.jar
@@ -232,12 +238,12 @@ svn propset svn:global-ignores -F svn-ignore.txt .
 svn propset svn:ignore -F svn-ignore.txt .
 ```
 
-### windows에서 svn command line으로 unresolved/missing을 delete/add로 바꾸기
+## windows에서 svn command line으로 unresolved/missing을 delete/add로 바꾸기
 ```batch
 for /f "usebackq tokens=1*" %a in (`svn status`) do (if "%a"=="!" (svn delete "%b") else (if "%a"=="?" (svn add "%b")))
 ```
 
-### 키타 유용한 명령(windows버전)
+# 키타 유용한 명령(windows버전)
 ```batch
 rem &&은 왼쪽 명령이 0(성공)일 때만 오른쪽 명령을 수행
 rem https://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/ntcmds_shelloverview.mspx?mfr=true
