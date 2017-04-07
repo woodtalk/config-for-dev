@@ -43,7 +43,7 @@ set number
 
 set encoding=UTF-8
 set fileencoding=UTF-8
-set fileencodings=UTF-8,euc-kr
+set fileencodings=UTF-8,UTF-16LE,euc-kr
 
 set tabstop=4
 set shiftwidth=4
@@ -90,7 +90,7 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	set columns=190
 
 	" 회사용 encoding 수정
-	"set fileencodings=cp949,UTF-8
+	"set fileencodings=cp949,UTF-8,UTF-16LE
 
 
 elseif has('macunix')
