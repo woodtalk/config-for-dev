@@ -76,22 +76,23 @@ set autochdir
 if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
 
 	" 윈도우에서 한글 메뉴 깨짐 현상 수정
-	source $VIMRUNTIME\delmenu.vim
+	"source $VIMRUNTIME\delmenu.vim
 	set langmenu=ko_kr.UTF-8
 
 	set guioptions-=T " no toolbar
+	set guioptions-=m " no menu
 
 	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
 
-	set guifontwide=Dotumche:h9:cDEFAULT
-	set guifont=Consolas:h10:cANSI
+	set guifontwide=Dotumche:h11:cDEFAULT
+	set guifont=Consolas:h12:cANSI
 
-	set lines=45
-	set columns=190
+	set lines=45	"44
+	set columns=150	"147
+	au GUIEnter * simalt ~x	" 전체 화면
 
 	" 회사용 encoding 수정
 	"set fileencodings=cp949,UTF-8,UTF-16LE
-
 
 elseif has('macunix')
 
