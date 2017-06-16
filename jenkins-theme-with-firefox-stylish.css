@@ -1,0 +1,5 @@
+/*
+  http://afonsof.com/jenkins-material-theme/
+*/
+@import url(https://cdn.rawgit.com/afonsof/jenkins-material-theme/gh-pages/dist/material-blue-grey.css) screen;
+@-moz-document url-prefix(http://sionbuild:8080) { @media screen {} }
