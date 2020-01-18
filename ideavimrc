@@ -1,0 +1,11 @@
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set clipboard=unnamedplus,unnamed
+
+set scrolloff=5
+
+" IdeaVimExtension
+set keep-english-in-normal-and-restore-in-insert

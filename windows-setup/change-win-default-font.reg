@@ -1,0 +1,18 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts]
+;"Batang & BatangChe & Gungsuh & GungsuhChe (TrueType)"="batang.ttc"
+;"Gulim & GulimChe & Dotum & DotumChe (TrueType)"="gulim.tcc"
+"Batang & BatangChe & Gungsuh & GungsuhChe (TrueType)"=""
+"Gulim & GulimChe & Dotum & DotumChe (TrueType)"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]
+;"Gulim"=-
+"Gulim"="나눔고딕"
+"GulimChe"="나눔고딕코딩"
+"Dotum"="나눔바른고딕"
+"DotumChe"="D2Coding"
+"Batang"="나눔명조"
+"BatangChe"="나눔명조"
+"Gungsuh"="D2Coding"
+"GungsuhChe"="D2Coding"

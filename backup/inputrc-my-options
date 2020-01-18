@@ -1,0 +1,6 @@
+# vim: set syntax=sh:
+# in ~/.inputrc
+# $include ~/git-workspace/config-for-dev/inputrc-my-options
+
+set completion-ignore-case on
+set show-mode-in-prompt on

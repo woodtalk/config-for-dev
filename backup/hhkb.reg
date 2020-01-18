@@ -1,0 +1,45 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\i8042prt\Parameters]
+"LayerDriver KOR"="kbd103.dll"
+"OverrideKeyboardSubtype"=dword:00000006
+"OverrideKeyboardIdentifier"="PCAT_103KEY"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:\
+; Scancode Map Header
+00,00,00,00,\
+; Scancode Map Version Info
+00,00,00,00,\
+; Number of DWORDS to follow
+05,00,00,00,\
+;
+; ESC(0001)
+; `(0029)
+; CapsLock(003A)
+; Backspace(000E)
+; Backslash(002B)
+; Left Control(001D)
+; Left Windows(E05B)
+; Left Alt(0038)
+; Right Alt(E038)
+; Right Windows(E05C)
+; Right Context Menu(E05D)
+; Right Ctrl(E01D)
+; ScrLk(0046)
+; hankey(0072) ; 103 keyboard type
+; hanjakey(0071) ; 103 keyboard type
+; HHKB Fn + Delete(E045) ; ?
+; HHKB Fn + `;Del(E053) ; ?
+;
+; CapsLock(003A)-->Right Context Menu(E05D)
+5d,e0,3a,00,\
+; Left Windows(E05B)-->Left Control(001D)
+1d,00,5b,e0,\
+; Right Windows(E05C)-->hankey(0072)
+72,00,5c,e0,\
+; Right Alt(E038)-->Right Windows(E05C)
+5c,e0,38,e0,\
+;
+; Null Termination
+00,00,00,00
