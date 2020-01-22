@@ -186,16 +186,10 @@ elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 �
 
 elseif has('macunix')
 
-	" https://github.com/vovkasm/input-source-switcher
-	" https://sangwook.github.io/2015/01/01/vim-insert-mode-keyboard-switch
-	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
-	endif
-
 	if has('gui_macvim') && has('gui_running')	" macvim
 
-		"set iminsert=1
-		"set imsearch=-1	" ims using of imi option
+		set iminsert=1
+		set imsearch=-1	" ims using of imi option
 
 		set transparency=15
 
@@ -203,6 +197,12 @@ elseif has('macunix')
 		set columns=190	"147
 
 	else				" terminal vim
+
+		" https://github.com/vovkasm/input-source-switcher
+		" https://sangwook.github.io/2015/01/01/vim-insert-mode-keyboard-switch
+		if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
+			autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
+		endif
 
 		" 한글 입력 시 바로 커맨드 모드로 나가기 위한 장치
 		inoremap <Esc> <Esc><Esc><Esc>
