@@ -64,6 +64,18 @@ Plugin 'goodell/vim-mscgen'
 "let g:markdown_enable_mappings = 0
 " }}}
 
+" vimwiki/vimwiki = {{{
+Plugin 'vimwiki/vimwiki'
+"let wiki = {}
+"let wiki.ext = '.md'
+"let g:vimwiki_list = [wiki]
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown',
+					  \ 'ext': '.md'}]
+"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_conceallevel = 0
+" }}}
+
 Plugin 'nanotech/jellybeans.vim'
 
 		if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
@@ -186,6 +198,18 @@ elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 �
 
 elseif has('macunix')
 
+	" https://github.com/vovkasm/input-source-switcher
+	" https://sangwook.github.io/2015/01/01/vim-insert-mode-keyboard-switch
+	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
+		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
+		"autocmd CmdwinEnter * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
+		" 서치를 하고 나서 Normal mode로 전환될 때도 영어로 전환하게 하고
+		" 싶은데, 잘 안되네...
+	endif
+	" macvim에서 cmd+tab 화면에서 불필요한 아이콘이 생성되고
+	" dock에서도 불필요한 아이콘이 증식하는데, libcall 버그가 있는 것 같고
+	" 불편하지만 감안하는 걸로 진행
+
 	if has('gui_macvim') && has('gui_running')	" macvim
 
 		set iminsert=1
@@ -193,18 +217,15 @@ elseif has('macunix')
 
 		set transparency=15
 
-		set lines=55	"44
-		set columns=190	"147
+		set guifont=Menlo:h13
+		set lines=65
+    	set columns=220
+
 
 	else				" terminal vim
 
-		" https://github.com/vovkasm/input-source-switcher
-		" https://sangwook.github.io/2015/01/01/vim-insert-mode-keyboard-switch
-		if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-			autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
-		endif
-
 		" 한글 입력 시 바로 커맨드 모드로 나가기 위한 장치
+		" 버그가 수정이 안되네
 		inoremap <Esc> <Esc><Esc><Esc>
 
 	endif
