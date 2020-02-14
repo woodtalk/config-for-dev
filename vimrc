@@ -66,13 +66,19 @@ Plugin 'goodell/vim-mscgen'
 
 " vimwiki/vimwiki = {{{
 Plugin 'vimwiki/vimwiki'
-"let wiki = {}
-"let wiki.ext = '.md'
-"let g:vimwiki_list = [wiki]
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown',
-					  \ 'ext': '.md'}]
-"let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let vimwiki = {}
+let vimwiki.ext = '.md'
+let vimwiki.path = '~/vimwiki/'
+let vimwiki.syntax = 'markdown'
+
+let githubwiki = {}
+let githubwiki.ext = '.md'
+let githubwiki.path = '~/git-workspace/woodtalk.github.io/_wiki/'
+let githubwiki.syntax = 'markdown'
+
+let g:vimwiki_list = [vimwiki,githubwiki]
+
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_conceallevel = 0
 " }}}
 
@@ -171,9 +177,9 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	set iminsert=1
 	set imsearch=-1	" ims using of imi option
 
-	set lines=40
-	set columns=140
-	autocmd GUIEnter * simalt ~x	" 전체 화면
+	set lines=70
+	set columns=270
+	" autocmd GUIEnter * simalt ~x	" 전체 화면
 
 	if filereadable(expand('~/vimfiles/bundle/vimtweak/vimtweak64.dll'))
 		autocmd GUIEnter * call libcallnr(expand('~/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 225)
