@@ -112,7 +112,9 @@ set fileformats=unix,dos
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-"set expandtab
+
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType vimwiki,markdown,md setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 set ruler
 
