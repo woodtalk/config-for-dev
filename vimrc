@@ -227,8 +227,9 @@ elseif has('macunix')
 
 		set guifont=Menlo:h13
 		set lines=65
-    	set columns=220
+		set columns=220
 
+		autocmd! GUIEnter * set vb t_vb=
 
 	else				" terminal vim
 
@@ -300,4 +301,3 @@ endif
 " 회사용 encoding & 화면 수정
 "if filereadable(expand('~/__at_office'))
 "endif
-
