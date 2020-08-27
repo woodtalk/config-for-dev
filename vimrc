@@ -171,8 +171,8 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 
 	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
 
-	"windows 10 1809 이상에서는 D2Coding이 모든 사용자(C:\Windows\Fonts)에 깔려야 font systemlink가 제대로 동작함
-	set guifont=Cascadia\ Mono:h10:cANSI,D2Coding:h10:w5.2:cANSI
+	"windows 10 1809 이상에서는 폰트가 모든 사용자(C:\Windows\Fonts)에 깔려야 font systemlink가 제대로 동작함
+	set guifont=SF\ Mono:h10:cANSI,Cascadia\ Mono:h10:cANSI,D2Coding:h10:w5.2:cANSI
 	set guifontwide=Dotumche:h9:cHANGEUL
 
 	"set noimd
