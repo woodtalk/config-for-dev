@@ -225,7 +225,7 @@ elseif has('macunix')
 
 		set transparency=15
 
-		set guifont=Menlo:h13
+		set guifont=SF\ Mono:h13,Menlo:h13
 		set lines=65
 		set columns=220
 
