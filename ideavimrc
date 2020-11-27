@@ -10,7 +10,7 @@ set scrolloff=5
 set visualbell
 set noerrorbells
 
-set dialogescape=off
+set ideavimsupport=
 
 " IdeaVimExtension
 set keep-english-in-normal-and-restore-in-insert

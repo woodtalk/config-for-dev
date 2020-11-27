@@ -88,6 +88,13 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'mattn/vimtweak'
 		endif
 
+Plugin 'diepm/vim-rest-console'
+
+" machakann/vim-highlightedyank = {{{
+Plugin 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 30000 " milliseconds; -1 persistent
+" }}}
+
 call vundle#end()
 
 filetype plugin indent on     " required
