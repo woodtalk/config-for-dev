@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]\{(.+?)\}/g, '<a href="wiki/$1">$2</a>');
-		content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]/g, '<a href="wiki/$1">$1</a>');
+		content.innerHTML = content.innerHTML.replace(/<a href="(?!http:\/\/|https:\/\/)\/?([^"']*?)">/g, '<a href="wiki/$1">');
 	})();
 });

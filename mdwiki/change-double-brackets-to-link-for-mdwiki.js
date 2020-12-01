@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (absolutePath == document.URL) {
 		absolutePath = '';
 	}
+	var mdwikiFileName = document.URL.match(/(mdwiki|mdwiki-slim).html/g)[0];
 
 	(function t() {
 		var content = document.body.querySelector('div[id="md-content"]');
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]\{(.+?)\}/g, '<a href="/mdwiki.html#!' + absolutePath + '/./$1.md">$2</a>').replaceAll('/./','/');
-		content.innerHTML = content.innerHTML.replace(/\[\[(.+?)\]\]/g, '<a href="/mdwiki.html#!' + absolutePath + '/./$1.md">$1</a>').replaceAll('/./','/');
+		content.innerHTML = content.innerHTML.replace(/<a href="(?!http:\/\/|https:\/\/)\/?([^"']*?)">/g, '<a href="' + miwikiFileName + '#!' + absolutePath + '/./$1.md">$1</a>').replaceAll('/./','/');
 	})();
 });
