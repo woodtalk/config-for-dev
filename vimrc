@@ -95,6 +95,8 @@ Plugin 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 30000 " milliseconds; -1 persistent
 " }}}
 
+Plugin 'mhinz/vim-startify'
+
 call vundle#end()
 
 filetype plugin indent on     " required
