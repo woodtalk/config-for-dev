@@ -88,7 +88,23 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'mattn/vimtweak'
 		endif
 
+" diepm/vim-rest-console = {{{
 Plugin 'diepm/vim-rest-console'
+" let g:vrc_set_default_mapping = 0 " :call VrcQuery()
+let g:vrc_trigger = '<C-j><C-j>'
+
+let g:vrc_header_content_type = 'application/json; charset=utf-8'
+let g:vrc_response_default_content_type = 'application/json'
+let g:vrc_debug = 0
+
+let g:vrc_auto_format_response_enabled = 1
+
+let g:vrc_show_command = 1
+
+let g:vrc_curl_opts = { '-s': '' } " 결과 메타데이터 생략
+
+" let g:vrc_elasticsearch_support = 1
+" }}}
 
 " machakann/vim-highlightedyank = {{{
 Plugin 'machakann/vim-highlightedyank'
