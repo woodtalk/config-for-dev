@@ -111,7 +111,49 @@ Plugin 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 30000 " milliseconds; -1 persistent
 " }}}
 
+" mhinz/vim-startify = {{{
 Plugin 'mhinz/vim-startify'
+let g:startify_files_number           = 18
+
+" Update session automatically as you exit vim
+let g:startify_session_persistence    = 1
+
+" Simplify the startify list to just recent files and sessions
+let g:startify_lists = [
+  \ { 'type': 'sessions',  'header': ['   Saved sessions'] },
+  \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+  \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+  \ ]
+  " \ { 'type': 'dir',       'header': ['   Recent files']   },
+  " \ { 'type': 'files',     'header': ['   Files']            },
+
+let g:startify_bookmarks = [
+  \ { 'vw': '~/vimwiki/index.md' },
+  \ { 'vr': '~/.vimrc' },
+  \ ]
+		if has('unix') && filereadable(expand('~/.zshrc'))
+let g:startify_bookmarks+=[{ 'z': '~/.zshrc' }]
+		endif
+		if has('unix') && isdirectory(expand('~/git-workspace'))
+let g:startify_bookmarks+=[
+  \ { 'gw': '~/git-workspace' }
+  \ ]
+        elseif (has('win32') || has('win64')) && isdirectory(expand('$HOME/git-workspace'))
+let g:startify_bookmarks+=[
+  \ { 'gw': '$HOME/git-workspace' }
+  \ ]
+		endif
+
+let g:startify_custom_header = [
+  \ '                               ',
+  \ '             __                ',
+  \ '    __   __ /\_\    ___ ___    ',
+  \ '   /\ \ /\ \\/\ \ /'' __` __`\ ',
+  \ '   \ \ \_/ | \ \ \/\ \/\ \/\ \ ',
+  \ '    \ \___/   \ \_\ \_\ \_\ \_\',
+  \ '     \/__/     \/_/\/_/\/_/\/_/',
+  \ ]
+" }}}
 
 call vundle#end()
 
