@@ -127,21 +127,33 @@ let g:startify_lists = [
   " \ { 'type': 'dir',       'header': ['   Recent files']   },
   " \ { 'type': 'files',     'header': ['   Files']            },
 
-let g:startify_bookmarks = [
-  \ { 'vw': '~/vimwiki/index.md' },
-  \ { 'vr': '~/.vimrc' },
-  \ ]
-		if has('unix') && filereadable(expand('~/.zshrc'))
-let g:startify_bookmarks+=[{ 'z': '~/.zshrc' }]
+let g:startify_bookmarks = []
+		if has('unix') && filereadable(expand('~/vimwiki/index.md'))
+			let g:startify_bookmarks+=[{ 'vw': '~/vimwiki/index.md' }]
+        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/vimwiki/index.md'))
+			let g:startify_bookmarks+=[{ 'vw': '$HOME/vimwiki/index.md' }]
 		endif
+
+		if has('unix') && filereadable(expand('~/.vimrc'))
+			let g:startify_bookmarks+=[{ 'vr': '~/.vimrc' }]
+        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/_vimrc'))
+			let g:startify_bookmarks+=[{ 'vr': '$HOME/_vimrc' }]
+		endif
+
+		if has('unix') && filereadable(expand('~/.zshrc'))
+			let g:startify_bookmarks+=[{ 'z': '~/.zshrc' }]
+		endif
+
 		if has('unix') && isdirectory(expand('~/git-workspace'))
-let g:startify_bookmarks+=[
-  \ { 'gw': '~/git-workspace' }
-  \ ]
+			let g:startify_bookmarks+=[{ 'gw': '~/git-workspace' }]
         elseif (has('win32') || has('win64')) && isdirectory(expand('$HOME/git-workspace'))
-let g:startify_bookmarks+=[
-  \ { 'gw': '$HOME/git-workspace' }
-  \ ]
+			let g:startify_bookmarks+=[{ 'gw': '$HOME/git-workspace' }]
+		endif
+
+		if has('unix') && filereadable(expand('~/git-workspace/woodtalk.github.io/_wiki/index.md'))
+			let g:startify_bookmarks+=[{ 'b': '~/git-workspace/woodtalk.github.io/_wiki/index.md' }]
+        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/git-workspace/woodtalk.github.io/_wiki/index.md'))
+			let g:startify_bookmarks+=[{ 'b': '$HOME/git-workspace/woodtalk.github.io/_wiki/index.md' }]
 		endif
 
 let g:startify_custom_header = [
