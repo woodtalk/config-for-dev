@@ -4,3 +4,6 @@ Windows Registry Editor Version 5.00
 "BingSearchEnabled"=dword:00000000
 ;"AllowSearchToUseLocation"=dword:00000000
 ;"CortanaConsent"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
