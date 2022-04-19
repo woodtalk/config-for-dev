@@ -195,6 +195,9 @@ set softtabstop=4
 
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType vimwiki,markdown,md setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" https://linux.systemv.pe.kr/vim-yaml-%EB%AC%B8%EB%B2%95-%EC%A0%81%EC%9A%A9/
+autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
+autocmd FileType yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 " autoindent
 
 set ruler
 
