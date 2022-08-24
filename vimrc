@@ -1,6 +1,5 @@
-" gvim 8.2 x64
-" osx homebrew vim 8.2
-" macvim 8.1
+" gvim 9.0 x64
+" macvim 9.0
 
 						if (isdirectory(expand('~/.vim/bundle')) || isdirectory(expand('~/vimfiles/bundle'))) && (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,9 +33,8 @@ let g:airline#extensions#tabline#enabled = 1
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
-"	if has('macunix')
-"osx terminal vim에서는 동작하지 않는 plugin
-"Plugin 'lyokha/vim-xkbswitch'
+
+"	if has('macunix') && has('gui_macvim') && has('gui_running')	" macvim
 "	endif
 
 " ctrlp = {{{
@@ -311,19 +309,12 @@ elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 �
 
 elseif has('macunix')
 
-	" https://github.com/vovkasm/input-source-switcher
-	" https://sangwook.github.io/2015/01/01/vim-insert-mode-keyboard-switch
-	if filereadable('/usr/local/lib/libInputSourceSwitcher.dylib')
-		autocmd InsertLeave * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
-		"autocmd CmdwinEnter * call libcall('/usr/local/lib/libInputSourceSwitcher.dylib', 'Xkb_Switch_setXkbLayout', 'com.apple.keylayout.ABC')
-		" 서치를 하고 나서 Normal mode로 전환될 때도 영어로 전환하게 하고
-		" 싶은데, 잘 안되네...
-	endif
-	" macvim에서 cmd+tab 화면에서 불필요한 아이콘이 생성되고
-	" dock에서도 불필요한 아이콘이 증식하는데, libcall 버그가 있는 것 같고
-	" 불편하지만 감안하는 걸로 진행
-
 	if has('gui_macvim') && has('gui_running')	" macvim
+		" https://github.com/laishulu/macism#must-read-note
+		if executable('/opt/homebrew/bin/macism')
+			" $(brew --prefix)
+			autocmd InsertLeave * :silent execute '!'.'/opt/homebrew/bin/macism'.' '.'com.apple.keylayout.ABC'
+		endif
 
 		set iminsert=1
 		set imsearch=-1	" ims using of imi option
