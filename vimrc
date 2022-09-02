@@ -1,7 +1,7 @@
 " gvim 9.0 x64
 " macvim 9.0
 
-						if (isdirectory(expand('~/.vim/bundle')) || isdirectory(expand('~/vimfiles/bundle'))) && (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
+						if (isdirectory(expand('~/.vim/bundle')) || isdirectory(expand('$HOME/vimfiles/bundle'))) && (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vudle.vim setting
 " http://github.com/gmarik/vundle
@@ -11,7 +11,7 @@ filetype off                  " required
 
 				if has('win32') || has('win64')
 set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$HOME/vimfiles/bundle/')
+call vundle#begin('$HOME/vimfiles/bundle')
 				else " mac or linux
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -119,10 +119,10 @@ let g:startify_session_persistence    = 1
 
 " Simplify the startify list to just recent files and sessions
 let g:startify_lists = [
-  \ { 'type': 'sessions',  'header': ['   Saved sessions'] },
-  \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-  \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-  \ ]
+\  { 'type': 'sessions',  'header': ['   Saved sessions'] },
+\  { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+\  { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+\]
   " \ { 'type': 'dir',       'header': ['   Recent files']   },
   " \ { 'type': 'files',     'header': ['   Files']            },
 
@@ -156,14 +156,14 @@ let g:startify_bookmarks = []
 		endif
 
 let g:startify_custom_header = [
-  \ '                               ',
-  \ '             __                ',
-  \ '    __   __ /\_\    ___ ___    ',
-  \ '   /\ \ /\ \\/\ \ /'' __` __`\ ',
-  \ '   \ \ \_/ | \ \ \/\ \/\ \/\ \ ',
-  \ '    \ \___/   \ \_\ \_\ \_\ \_\',
-  \ '     \/__/     \/_/\/_/\/_/\/_/',
-  \ ]
+\  '                               ',
+\  '             __                ',
+\  '    __   __ /\_\    ___ ___    ',
+\  '   /\ \ /\ \\/\ \ /'' __` __`\ ',
+\  '   \ \ \_/ | \ \ \/\ \/\ \/\ \ ',
+\  '    \ \___/   \ \_\ \_\ \_\ \_\',
+\  '     \/__/     \/_/\/_/\/_/\/_/',
+\]
 " }}}
 
 " eslint/eslint = {{{
@@ -174,11 +174,11 @@ Plugin 'eslint/eslint'
 Plugin 'w0rp/ale'
 
 let g:ale_linters = {
-  \   'javascript': ['eslint'],
-  \}
+\  'javascript': ['eslint'],
+\}
 let g:ale_fixers = {
-      \   'javascript': ['eslint'],
-      \}
+\  'javascript': ['eslint'],
+\}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
@@ -286,8 +286,8 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	set columns=270
 	" autocmd GUIEnter * simalt ~x	" 전체 화면
 
-	if filereadable(expand('~/vimfiles/bundle/vimtweak/vimtweak64.dll'))
-		autocmd GUIEnter * call libcallnr(expand('~/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 225)
+	if filereadable(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'))
+		autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 225)
 	endif
 
 elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 실행했을 때
