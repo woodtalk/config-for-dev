@@ -3,7 +3,7 @@ set smartcase
 set incsearch
 set hlsearch
 
-set clipboard=unnamedplus,unnamed
+set clipboard+=unnamedplus,unnamed,ideaput
 
 set scrolloff=5
 
@@ -11,6 +11,9 @@ set visualbell
 set noerrorbells
 
 set ideavimsupport=
+
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "10000"
 
 " IdeaVimExtension
 set keep-english-in-normal-and-restore-in-insert
