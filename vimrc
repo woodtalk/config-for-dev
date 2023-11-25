@@ -280,7 +280,7 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 
 	"windows 10 1809 이상에서는 폰트가 모든 사용자(C:\Windows\Fonts)에 깔려야 font systemlink가 제대로 동작함
 	set guifont=Cascadia\ Mono:h10:cANSI,D2Coding:h10:w5.2:cANSI
-	set guifontwide=Dotumche:h9:cHANGEUL
+	set guifontwide=D2Coding:h10:cHANGEUL,Dotumche:h9:cHANGEUL
 
 	"set noimd
 	set iminsert=1
@@ -291,7 +291,7 @@ if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || ha
 	" autocmd GUIEnter * simalt ~x	" 전체 화면
 
 	if filereadable(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'))
-		autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 225)
+		autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
 	endif
 
 elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 실행했을 때
