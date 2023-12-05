@@ -160,13 +160,13 @@ let g:startify_bookmarks = []
 		endif
 
 let g:startify_custom_header = [
-\  '                               ',
 \  '             __                ',
 \  '    __   __ /\_\    ___ ___    ',
-\  '   /\ \ /\ \\/\ \ /'' __` __`\ ',
+\  '   /\ \ /\ \\/\ \  /''__` __`\  ',
 \  '   \ \ \_/ | \ \ \/\ \/\ \/\ \ ',
 \  '    \ \___/   \ \_\ \_\ \_\ \_\',
 \  '     \/__/     \/_/\/_/\/_/\/_/',
+\  '   version: '.matchstr(execute('version'), 'Vi IMproved \zs\d[^ ]*').'.'.matchstr(execute('version'), '\(포함된 패치\|Included patches\): \(\d*-\?\d\+, \)*\d*-\?\zs\d\+')
 \]
 " }}}
 
