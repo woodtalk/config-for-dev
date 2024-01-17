@@ -63,6 +63,10 @@ Plugin 'goodell/vim-mscgen'
 "let g:markdown_enable_mappings = 0
 " }}}
 
+Plugin 'stephpy/vim-yaml'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
+
 " vimwiki/vimwiki = {{{
 Plugin 'vimwiki/vimwiki'
 let vimwiki = {}
@@ -170,18 +174,16 @@ let g:startify_custom_header = [
 \]
 " }}}
 
-" eslint/eslint = {{{
-Plugin 'eslint/eslint'
-" }}}
-
-" w0rp/ale = {{{
-Plugin 'w0rp/ale'
+" dense-analysis/ale = {{{
+Plugin 'dense-analysis/ale'
 
 let g:ale_linters = {
-\  'javascript': ['eslint'],
+\  'typescript': ['prettier', 'eslint'],
+\  'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fixers = {
-\  'javascript': ['eslint'],
+\  'typescript': ['prettier', 'eslint'],
+\  'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '>>'
@@ -266,6 +268,14 @@ set showbreak=↪	"set wrap
 					"let &showbreak="\u21AA"	"set wrap
 
 				" }}}
+
+" https://gist.github.com/atripes/15372281209daf5678cded1d410e6c16?permalink_comment_id=3781583#gistcomment-3781583
+"vnoremap <leader>en :!python3 -c 'import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))'<cr>
+vnoremap <leader>de :!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'<cr>
+vnoremap <leader>js :!python3 -m json.tool<cr>
+
+" https://stackoverflow.com/a/50521342
+nnoremap q: <nop>
 
 if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
 
