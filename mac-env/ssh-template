@@ -1,0 +1,21 @@
+#Host git-host-domain
+#  HostName git-host-domain
+#  User git
+#  PreferredAuthentications publickey
+#  #IdentityFile ~/.ssh/bla-bla
+
+#Host git-host-domain-another
+#  HostName git-host-domain-another
+#  User git
+#  PreferredAuthentications publickey
+#  IdentityFile ~/.ssh/another-bla-bla
+
+#Host ssh-key-example
+#  HostName real-machine-host-name-with-domain-maybe
+#  User ssh-user-id
+#  PreferredAuthentications publickey
+
+#Host *.multi-domain.com *.another-multi-domain.co.kr
+#  User ssh-user-id
+#  GSSAPIAuthentication yes
+#  PreferredAuthentications gssapi-with-mic
