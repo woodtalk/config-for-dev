@@ -277,6 +277,9 @@ vnoremap <leader>js :!python3 -m json.tool<cr>
 " https://stackoverflow.com/a/50521342
 nnoremap q: <nop>
 
+" https://stackoverflow.com/a/3736798
+set nostartofline
+
 if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
 
 	" 윈도우에서 한글 메뉴 깨짐 현상 수정
