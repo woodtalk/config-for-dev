@@ -5,13 +5,20 @@ scriptencoding utf-8
 set encoding=utf-8
 set nocompatible
 
-let s:plug_path = expand('~/.vim/autoload/plug.vim')
+if has('win32') || has('win64')
+    let s:vim_home = '$HOME/vimfiles'
+else
+    let s:vim_home = '~/.vim'
+endif
+
+let s:plug_path = expand(s:vim_home . '/autoload/plug.vim')
 let s:plug_installed = 0
 
 if empty(glob(s:plug_path))
     if executable('git')
-        echo "Installing vim-plug via git..."
-        silent !git clone https://github.com/junegunn/vim-plug.git ~/.vim/autoload/
+        let s:autoload_dir = expand(s:vim_home . '/autoload')
+
+        silent execute '!git clone https://github.com/junegunn/vim-plug.git "' . s:autoload_dir . '"'
 
         if !empty(glob(s:plug_path))
             let s:plug_installed = 1
@@ -24,7 +31,7 @@ endif
 
                             if s:plug_installed
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(expand(s:vim_home . '/plugged'))
 
 " --- [UI / Theme] ---
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -183,8 +190,7 @@ set listchars=tab:▸\ ,eol:↲,trail:•,extends:⟩,precedes:⟨
 set showbreak=↪
 
 if exists("*mkdir")
-    let s:vim_home = expand('~/.vim')
-    let s:dirs = [s:vim_home.'/swap', s:vim_home.'/backup', s:vim_home.'/undo']
+    let s:dirs = [expand(s:vim_home.'/swap'), expand(s:vim_home.'/backup'), expand(s:vim_home.'/undo')]
 
     for s:dir in s:dirs
         if !isdirectory(s:dir) | call mkdir(s:dir, "p") | endif
@@ -239,13 +245,13 @@ if has('gui_running') && (has('win32') || has('win64'))
 
     set lines=70 columns=270
 
-    if filereadable(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'))
-        autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
+    if filereadable(expand('$HOME/vimfiles/plugged/vimtweak/vimtweak64.dll'))
+        autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/plugged/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
     endif
 
 elseif (has('win32') || has('win64')) || (has('unix') && executable('cmd.exe'))
 
-    let s:im_select_path = expand('~/.vim/bin/im-select.exe')
+    let s:im_select_path = expand(s:vim_home . '/bin/im-select.exe')
 
     if !filereadable(s:im_select_path)
 
@@ -255,7 +261,7 @@ elseif (has('win32') || has('win64')) || (has('unix') && executable('cmd.exe'))
         let s:url = 'https://github.com/daipeihust/im-select/releases/download/v2.0.2/im-select.exe'
 
         if executable('curl')
-            let s:cmd = '!curl -fLo ' . s:im_select_path . ' --create-dirs ' . s:url
+            let s:cmd = '!curl -fLo "' . s:im_select_path . '" --create-dirs ' . s:url
         else
             let s:cmd = '!powershell -Command "Invoke-WebRequest -Uri ' . s:url . ' -OutFile ''' . s:im_select_path . '''"'
         endif
