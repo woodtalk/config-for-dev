@@ -1,167 +1,141 @@
-" gvim 9.0 x64
-" macvim 9.0
+" my config
+" http://github.com/woodtalk/config-for-dev
 
-						if (isdirectory(expand('~/.vim/bundle')) || isdirectory(expand('$HOME/vimfiles/bundle'))) && (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vudle.vim setting
-" http://github.com/gmarik/vundle
+scriptencoding utf-8
+set encoding=utf-8
+set nocompatible
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+let s:plug_path = expand('~/.vim/autoload/plug.vim')
+let s:plug_installed = 0
 
-				if has('win32') || has('win64')
-set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$HOME/vimfiles/bundle')
-				else " mac or linux
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-				endif
+if empty(glob(s:plug_path))
+    if executable('git')
+        echo "Installing vim-plug via git..."
+        silent !git clone https://github.com/junegunn/vim-plug.git ~/.vim/autoload/
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+        if !empty(glob(s:plug_path))
+            let s:plug_installed = 1
+            autocmd VimEnter * PlugInstall --sync | q | source $MYVIMRC
+        endif
+    endif
+else
+    let s:plug_installed = 1
+endif
 
-" The-NERD-tree = {{{
-Plugin 'scrooloose/nerdtree'
+                            if s:plug_installed
+
+call plug#begin('~/.vim/plugged')
+
+" --- [UI / Theme] ---
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
+Plug 'morhetz/gruvbox'
+
+" --- [Git Integration] ---
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+Plug 'idanarye/vim-merginal'
+
+" --- [Language & Syntax] ---
+Plug 'scrooloose/nerdcommenter'
+Plug 'dense-analysis/ale'
+Plug 'stephpy/vim-yaml'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'jeroenbourgois/vim-actionscript'
+Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+
+" --- [Tools] ---
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'diepm/vim-rest-console'
+Plug 'machakann/vim-highlightedyank'
+
+" --- [Windows Specific] ---
+if has('win32') || has('win64')
+    Plug 'mattn/vimtweak'
+endif
+
+if has('win32') || has('win64') || (has('unix') && executable('cmd.exe'))
+    Plug 'brglng/vim-im-select'
+endif
+
+call plug#end()
+
+" [NERDTree]
 noremap <C-n> :NERDTreeToggle<CR>
-" }}}
-Plugin 'scrooloose/nerdcommenter'
 
-" vim-airline = {{{
-Plugin 'vim-airline/vim-airline'
+" [Airline]
 let g:airline#extensions#tabline#enabled = 1
-" }}}
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mhinz/vim-signify'
 
-"	if has('macunix') && has('gui_macvim') && has('gui_running')	" macvim
-"	endif
-
-" ctrlp = {{{
-Plugin 'ctrlpvim/ctrlp.vim'
+" [CtrlP]
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\.git$\|\.svn$\|public$\|log$\|tmp$\|vendor$',
+  \ 'dir':  '\.git$\|\.svn$\|public$\|log$\|tmp$\|vendor$',
   \ 'file': '\v\.(exe|so|dll|swp|zip|gz|jpg|gif)$'
   \ }
-" }}}
 
-Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-rhubarb'
-Plugin 'idanarye/vim-merginal'
-Plugin 'scrooloose/syntastic'
-
-Plugin 'PProvost/vim-ps1'
-"Plugin 'hoffstein/vim-tsql'
-Plugin 'jeroenbourgois/vim-actionscript'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'goodell/vim-mscgen'
-"Plugin 'rainbow_csv.vim'
-" gabrielelana/vim-markdown = {{{
-"Plugin 'gabrielelana/vim-markdown'
-"let g:markdown_enable_spell_checking = 0
-"let g:markdown_enable_mappings = 0
-" }}}
-
-Plugin 'stephpy/vim-yaml'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'pangloss/vim-javascript'
-
-" vimwiki/vimwiki = {{{
-Plugin 'vimwiki/vimwiki'
-let vimwiki = {}
-let vimwiki.ext = '.md'
-let vimwiki.path = '~/vimwiki/'
-let vimwiki.syntax = 'markdown'
-
-let githubwiki = {}
-let githubwiki.ext = '.md'
-let githubwiki.path = '~/git-workspace/woodtalk.github.io/_wiki/'
-let githubwiki.syntax = 'markdown'
-
-let g:vimwiki_list = [vimwiki,githubwiki]
-
+" [Vimwiki]
+let g:vimwiki_list = [
+            \ {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
+            \ {'path': '~/git-workspace/woodtalk.github.io/_wiki/', 'syntax': 'markdown', 'ext': '.md'}
+            \ ]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 let g:vimwiki_conceallevel = 0
-" }}}
 
-"Plugin 'nanotech/jellybeans.vim'
-" morhetz/gruvbox = {{{
-Plugin 'morhetz/gruvbox'
+" [ALE]
+let g:ale_linters = {'typescript': ['prettier', 'eslint'], 'javascript': ['prettier', 'eslint']}
+let g:ale_fixers = {'typescript': ['prettier', 'eslint'], 'javascript': ['prettier', 'eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" [Gruvbox]
 let g:gruvbox_contrast_light = 'hard'
-" }}}
 
-		if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
-Plugin 'mattn/vimtweak'
-		endif
-
-" diepm/vim-rest-console = {{{
-Plugin 'diepm/vim-rest-console'
-" let g:vrc_set_default_mapping = 0 " :call VrcQuery()
+" [Rest Console]
 let g:vrc_trigger = '<C-j><C-j>'
-
 let g:vrc_header_content_type = 'application/json; charset=utf-8'
 let g:vrc_response_default_content_type = 'application/json'
-let g:vrc_debug = 0
 
 let g:vrc_auto_format_response_enabled = 1
-
 let g:vrc_show_command = 1
-
 let g:vrc_curl_opts = { '-s': '' } " 결과 메타데이터 생략
 
-" let g:vrc_elasticsearch_support = 1
-" }}}
-
-" machakann/vim-highlightedyank = {{{
-Plugin 'machakann/vim-highlightedyank'
+" [HighlightedYank]
 let g:highlightedyank_highlight_duration = 30000 " milliseconds; -1 persistent
-" }}}
 
-" mhinz/vim-startify = {{{
-Plugin 'mhinz/vim-startify'
-let g:startify_files_number           = 18
-
-" Update session automatically as you exit vim
-let g:startify_session_persistence    = 1
-
-" Simplify the startify list to just recent files and sessions
+" [Startify]
+let g:startify_files_number = 18
+let g:startify_session_persistence = 1
 let g:startify_lists = [
-\  { 'type': 'sessions',  'header': ['   Saved sessions'] },
-\  { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-\  { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-\]
-  " \ { 'type': 'dir',       'header': ['   Recent files']   },
-  " \ { 'type': 'files',     'header': ['   Files']            },
+      \ { 'type': 'sessions',  'header': ['   Saved sessions'] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']       },
+      \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+      \ ]
 
 let g:startify_bookmarks = []
-		if has('unix') && filereadable(expand('~/vimwiki/index.md'))
-			let g:startify_bookmarks+=[{ 'vw': '~/vimwiki/index.md' }]
-        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/vimwiki/index.md'))
-			let g:startify_bookmarks+=[{ 'vw': '$HOME/vimwiki/index.md' }]
-		endif
+let s:raw_bookmarks = [
+            \ {'key': 'vw', 'path': '~/vimwiki/index.md'},
+            \ {'key': 'vr', 'path': has('win32') ? '$HOME/_vimrc' : '~/.vimrc'},
+            \ {'key': 'z',  'path': '~/.zshrc'},
+            \ {'key': 'gw', 'path': '~/git-workspace'},
+            \ {'key': 'b',  'path': '~/git-workspace/woodtalk.github.io/_wiki/index.md'}
+            \ ]
 
-		if has('unix') && filereadable(expand('~/.vimrc'))
-			let g:startify_bookmarks+=[{ 'vr': '~/.vimrc' }]
-        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/_vimrc'))
-			let g:startify_bookmarks+=[{ 'vr': '$HOME/_vimrc' }]
-		endif
-
-		if has('unix') && filereadable(expand('~/.zshrc'))
-			let g:startify_bookmarks+=[{ 'z': '~/.zshrc' }]
-		endif
-
-		if has('unix') && isdirectory(expand('~/git-workspace'))
-			let g:startify_bookmarks+=[{ 'gw': '~/git-workspace' }]
-        elseif (has('win32') || has('win64')) && isdirectory(expand('$HOME/git-workspace'))
-			let g:startify_bookmarks+=[{ 'gw': '$HOME/git-workspace' }]
-		endif
-
-		if has('unix') && filereadable(expand('~/git-workspace/woodtalk.github.io/_wiki/index.md'))
-			let g:startify_bookmarks+=[{ 'b': '~/git-workspace/woodtalk.github.io/_wiki/index.md' }]
-        elseif (has('win32') || has('win64')) && filereadable(expand('$HOME/git-workspace/woodtalk.github.io/_wiki/index.md'))
-			let g:startify_bookmarks+=[{ 'b': '$HOME/git-workspace/woodtalk.github.io/_wiki/index.md' }]
-		endif
+for s:item in s:raw_bookmarks
+    let s:expanded_path = expand(s:item.path)
+    if filereadable(s:expanded_path) || isdirectory(s:expanded_path)
+        let g:startify_bookmarks += [{ s:item.key : s:expanded_path }]
+    endif
+endfor
 
 let g:startify_custom_header = [
 \  '             __                ',
@@ -171,77 +145,29 @@ let g:startify_custom_header = [
 \  '    \ \___/   \ \_\ \_\ \_\ \_\',
 \  '     \/__/     \/_/\/_/\/_/\/_/',
 \  '   version: '.matchstr(execute('version'), 'Vi IMproved \zs\d[^ ]*').'.'.matchstr(execute('version'), '\(포함된 패치\|Included patches\): \(\d*-\?\d\+, \)*\d*-\?\zs\d\+')
-\]
-" }}}
-
-" dense-analysis/ale = {{{
-Plugin 'dense-analysis/ale'
-
-let g:ale_linters = {
-\  'typescript': ['prettier', 'eslint'],
-\  'javascript': ['prettier', 'eslint'],
-\}
-let g:ale_fixers = {
-\  'typescript': ['prettier', 'eslint'],
-\  'javascript': ['prettier', 'eslint'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" let g:ale_python_flake8_options = '--max-line-length 88 --extend-ignore=E203'
-" }}}
-
-call vundle#end()
-
-filetype plugin indent on     " required
-
-						endif " isdirectory(expand('~/.vim/bundle')) && (has('win32unix') || has('win64unix')) == 0	" mingw or cygwin Plugin 등 제거
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" my config
-" http://github.com/woodtalk/config-for-dev
+\ ]
+                                endif " if s:plug_installed
 
 syntax on
 
 set number
+set ruler
+set wildmenu
+set showmatch
+set matchpairs+=<:>
+set scrolloff=5
 
-"scriptencoding UTF-8
-set encoding=UTF-8
-set fileencoding=UTF-8
-set fileencodings=ucs-bom,UTF-8,euc-kr,cp949,UTF-16LE,UTF-16BE
+set fileencodings=ucs-bom,utf-8,euc-kr,cp949,utf-16le,utf-16be,latin1
 set fileformat=unix
-set fileformats=unix,dos
 
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType vimwiki,markdown,md setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-" https://linux.systemv.pe.kr/vim-yaml-%EB%AC%B8%EB%B2%95-%EC%A0%81%EC%9A%A9/
-autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
-autocmd FileType yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 " autoindent
-
-set ruler
-
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-
-set wildmenu	" command mode의 find 명령어 관련?
-
-set showmatch
-set matchpairs+=<:>
-
-set scrolloff=5
-
-"set foldmethod=marker
-"set foldmethod=syntax
-"set foldmarker={{{,}}}	"default option
 
 set clipboard=unnamedplus,unnamed
 set backspace=indent,eol,start
@@ -253,21 +179,36 @@ silent! colorscheme gruvbox
 set autochdir
 
 set list
-				" {{{
-set listchars=tab:▸\ ,eol:↲,trail:•
-"set listchars+=space:␣	" not nbsp
+set listchars=tab:▸\ ,eol:↲,trail:•,extends:⟩,precedes:⟨
+set showbreak=↪
 
-set listchars+=extends:⟩,precedes:⟨	"set nowrap
-set showbreak=↪	"set wrap
-				" }}} else {{{
+if exists("*mkdir")
+    let s:vim_home = expand('~/.vim')
+    let s:dirs = [s:vim_home.'/swap', s:vim_home.'/backup', s:vim_home.'/undo']
 
-					"let &listchars="tab:\u25B8 ,eol:\u21b2,trail:\u2022"
-					""let &listchars=&listchars.",space:\u2423"	" not nbsp
+    for s:dir in s:dirs
+        if !isdirectory(s:dir) | call mkdir(s:dir, "p") | endif
+    endfor
 
-					"let &listchars=&listchars."extends:\u27E9,precedes:\u27E8"	"set nowrap
-					"let &showbreak="\u21AA"	"set wrap
+    let &directory = s:dirs[0] . '//'
+    let &backupdir = s:dirs[1] . '//'
+    let &undodir   = s:dirs[2] . '//'
+endif
 
-				" }}}
+augroup filetype_setup
+    autocmd!
+    autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+    autocmd FileType vimwiki,markdown,md,yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+    autocmd FileType vimwiki,markdown,md setlocal backup writebackup undofile
+augroup END
+
+set autoread
+augroup checktime
+    autocmd!
+    if !has("gui_running")
+        autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
+    endif
+augroup END
 
 " https://gist.github.com/atripes/15372281209daf5678cded1d410e6c16?permalink_comment_id=3781583#gistcomment-3781583
 "vnoremap <leader>en :!python3 -c 'import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))'<cr>
@@ -280,135 +221,121 @@ nnoremap q: <nop>
 " https://stackoverflow.com/a/3736798
 set nostartofline
 
-if has('gui_running') && (has('win32') || has('win64') || has('gui win32') || has('gui win64'))
+if has('gui_running') && (has('win32') || has('win64'))
 
-	" 윈도우에서 한글 메뉴 깨짐 현상 수정
-	"source $VIMRUNTIME\delmenu.vim
-	set langmenu=ko_kr.UTF-8
+    " 윈도우에서 한글 메뉴 깨짐 현상 수정
+    set langmenu=ko_kr.UTF-8
 
 	set guioptions-=T " no toolbar
 	set guioptions-=m " no menu
 
-	language messages ko_kr.UTF-8	" 하단 깨진 한글 메시지 복원
+    language messages ko_kr.UTF-8   " 하단 깨진 한글 메시지 복원
 
-	"windows 10 1809 이상에서는 폰트가 모든 사용자(C:\Windows\Fonts)에 깔려야 font systemlink가 제대로 동작함
-	set guifont=Cascadia\ Mono:h10:cANSI,D2Coding:h10:w5.2:cANSI
-	set guifontwide=D2Coding:h10:cHANGEUL,Dotumche:h9:cHANGEUL
+    set guifont=Cascadia\ Mono:h10:cANSI,D2Coding:h10:w5.2:cANSI
+    set guifontwide=D2Coding:h10:cHANGEUL,Dotumche:h9:cHANGEUL
 
-	"set noimd
-	set iminsert=1
-	set imsearch=-1	" ims using of imi option
+    set iminsert=1
+    set imsearch=-1 " ims using of imi option
 
-	set lines=70
-	set columns=270
-	" autocmd GUIEnter * simalt ~x	" 전체 화면
+    set lines=70 columns=270
 
-	if filereadable(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'))
-		autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
-	endif
+    if filereadable(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'))
+        autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/bundle/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
+    endif
 
-elseif has('win32') || has('win64')	" windows에서 cmd에서 vim 명령어로 실행했을 때
+elseif (has('win32') || has('win64')) || (has('unix') && executable('cmd.exe'))
 
-	if executable('python') && filereadable(expand('~/git-workspace/config-for-dev/ime_toggle_for_win.py'))
+    let s:im_select_path = expand('~/.vim/bin/im-select.exe')
 
-		" 아래 명령은 온전히 내가 만든 것이다.
-		autocmd InsertLeave * call system('python "' . expand('~/git-workspace/config-for-dev/ime_toggle_for_win.py') . '" a')
+    if !filereadable(s:im_select_path)
 
-		" git clone https://github.com/heyeshuang/ime_helper %USERPROFILE%/.vim/ime_helper
-		" https://github.com/heyeshuang/ime_helper
-		"autocmd InsertLeave * call system('python ' . expand('~/.vim/ime_helper/ime_helper.py') . ' --locale en_US')
-		"autocmd InsertEnter * call system('python ' . expand('~/.vim/ime_helper/ime_helper.py') . ' --locale ko_KR')
-		"autocmd VimLeave * call system('python ' . expand('~/.vim/ime_helper/ime_helper.py') . ' --locale ko_KR')
-		" 원래 아래 꺼였는데 뭔가 느린 거 같아 폐기
-		" autocmd InsertLeave * :silent execute '!python '.expand('$USERPROFILE/.vim/ime_helper/ime_helper.py').' --locale en_US'
+        let s:bin_dir = fnamemodify(s:im_select_path, ':h')
+        if !isdirectory(s:bin_dir) | call mkdir(s:bin_dir, 'p') | endif
 
-	endif
+        let s:url = 'https://github.com/daipeihust/im-select/releases/download/v2.0.2/im-select.exe'
+
+        if executable('curl')
+            let s:cmd = '!curl -fLo ' . s:im_select_path . ' --create-dirs ' . s:url
+        else
+            let s:cmd = '!powershell -Command "Invoke-WebRequest -Uri ' . s:url . ' -OutFile ''' . s:im_select_path . '''"'
+        endif
+        silent execute s:cmd
+
+        if has('unix')
+            silent execute '!chmod +x ' . s:im_select_path
+        endif
+    endif
+
+    if filereadable(s:im_select_path)
+        let s:bin_dir = fnamemodify(s:im_select_path, ':h')
+        let $PATH = s:bin_dir . ';' . $PATH
+
+        let g:im_select_default = 1033
+        let g:im_select_get_current_cmd = [s:im_select_path]
+        let g:im_select_switch_cmd = [s:im_select_path, '{im}']
+    endif
 
 elseif has('macunix')
 
-	if has('gui_macvim') && has('gui_running')	" macvim
-		" https://github.com/laishulu/macism#must-read-note
-		if executable('/opt/homebrew/bin/macism')
-			" $(brew --prefix)
-			autocmd InsertLeave * :silent execute '!'.'/opt/homebrew/bin/macism'.' '.'com.apple.keylayout.ABC'
-		endif
+    " macvim
+    if has('gui_macvim') && has('gui_running')
 
-		set iminsert=1
-		set imsearch=-1	" ims using of imi option
+        set transparency=10
+        set guifont=SF\ Mono:h13,Menlo:h13
+        set lines=65 columns=220
 
-		set transparency=10
+        augroup mac_gui_settings
+            autocmd!
+            " https://github.com/laishulu/macism#must-read-note
+            " $(brew --prefix)
+            if executable('/opt/homebrew/bin/macism')
+                autocmd InsertLeave * :silent execute '!'.'/opt/homebrew/bin/macism'.' '.'com.apple.keylayout.ABC'
+            endif
+            autocmd GUIEnter * set vb t_vb=
+        augroup END
 
-		set guifont=SF\ Mono:h13,Menlo:h13
-		set lines=65
-		set columns=220
+    endif
 
-		autocmd! GUIEnter * set vb t_vb=
+    if has('python3')
+        function! s:NormalizeNFC()
+python3 << EOF
+import vim, os, unicodedata
 
-	else				" terminal vim
+def run():
+    current_path = vim.eval('expand("%:p")')
+    if not os.path.exists(current_path):
+        return
 
-		" 한글 입력 시 바로 커맨드 모드로 나가기 위한 장치
-		" 버그가 수정이 안되네
-		inoremap <Esc> <Esc><Esc><Esc>
+    nfc_path = unicodedata.normalize('NFC', current_path)
+    if current_path == nfc_path:
+        return
 
-	endif
+    try:
+        temp_path = current_path + ".nfc_tmp"
+        os.rename(current_path, temp_path)
+        os.rename(temp_path, nfc_path)
 
-elseif has('unix') && has('macunix') == 0
+        esc_path = vim.eval(f"fnameescape('{nfc_path}')")
+        vim.command(f"edit {esc_path}")
+        vim.command("filetype detect")
+        vim.command("redraw!")
+        print(f"[Vim] Fixed NFD -> NFC: {os.path.basename(nfc_path)}")
 
-	" fcitx-remote 인데 wsl에서는 왠지 안 먹는거 같다
+    except Exception as e:
+        print(f"[Error] NFC fix failed: {e}")
+run()
+EOF
+        endfunction
 
-"	if executable('cmd.exe')	" 'cmd.exe가 실행 가능한 unix' == '즉, wsl'
-"		if executable('python.exe')
-"			" 아래 명령셋은 내가 고안해 놓은 것인데
-"			" ime_toggle_for_win.py를 cmd.exe를 이용해서 실행하는 방식이다.
-"			let t:home_path = system('cmd.exe /C "echo %USERPROFILE%"')
-"			let t:home_path = substitute(t:home_path, '\(\r\|\n\)', '', 'g')
-"
-"			let t:ime_toggle_path = t:home_path . '/git-workspace/config-for-dev/ime_toggle_for_win.py'
-"			let t:ime_toggle_path = substitute(t:ime_toggle_path, '/', '\\', 'g')
-"			let t:ime_toggle_path = substitute(t:ime_toggle_path, '\\', '\\\\', 'g')
-"			let t:ime_toggle_path = '"' . t:ime_toggle_path . '"'
-"
-"			call system('cmd.exe /C "IF NOT EXIST ' . t:ime_toggle_path . ' (exit /b 2)"')
-"			if v:shell_error == 0
-"
-"				" 좀 느린게 단점이다.
-"				" &로 bg에서 실행하게 했는데, 그럼 let에 변수 대입이 안 된다.
-"				"let t:before_ime_toggle_option = 'c'
-"				"autocmd InsertLeave * let t:before_ime_toggle_option = substitute(system('python.exe ' . t:ime_toggle_path . ' a'), '\(\r\|\n\)', '', 'g')
-"				"autocmd InsertEnter * call system('python.exe ' . t:ime_toggle_path . ' ' . t:before_ime_toggle_option)
-"				""autocmd VimLeave * call system('python.exe ' . t:ime_toggle_path . ' ' . t:before_ime_toggle_option)
-"
-"				" background 실행으로 해결했다.
-"				" 여전히 느려서 insert 모드를 빠져 나갈 때 바로 커서가 움직이지는 않지만 잔상이 남아 곤란한 문제는 해결했다.
-"				autocmd InsertLeave * call system('python.exe ' . t:ime_toggle_path . ' a &')
-"
-"				" cmd.exe /Q /D /C start python.exe 이렇게 쓸 수도 있지만 팝업이 뜨는 등 문제가 좀 있다.
-"
-"			else
-"				unlet t:ime_toggle_path
-"
-"				" 여기는 http://blog.heysh.xyz/2017/09/05/atom-vim-mode-auto-switch-ime/ 참고
-"
-"				let t:ime_helper_path = t:home_path . '/vimfiles/ime_helper/ime_helper.py'
-"				let t:ime_helper_path = substitute(t:ime_helper_path, '/', '\\', 'g')
-"				let t:ime_helper_path = substitute(t:ime_helper_path, '\\', '\\\\', 'g')
-"				let t:ime_helper_path = '"' . t:ime_helper_path . '"'
-"
-"				call system('cmd.exe /C "IF NOT EXIST ' . t:ime_helper_path . ' (exit /b 2)"')
-"				if v:shell_error == 0
-"					autocmd InsertLeave * call system('python.exe ' . t:ime_helper_path . ' --locale en_US' . ' &')
-"					autocmd InsertEnter * call system('python.exe ' . t:ime_helper_path . ' --locale ko_KR')
-"					autocmd VimLeave * call system('python.exe ' . t:ime_helper_path . ' --locale ko_KR')
-"					"autocmd InsertLeave * call system('cmd.exe /C ' . '"' . 'python.exe ' . t:ime_helper_path . ' --locale en_US' . '"')
-"				else
-"					unlet t:ime_helper_path
-"				endif
-"			endif
-"
-"			unlet t:home_path
-"		endif
-"	endif
+        augroup mac_nfc_fix
+            autocmd!
+            autocmd BufWritePost * call s:NormalizeNFC()
+        augroup END
+    endif
 
+else
+
+    inoremap <Esc> <Esc><Esc><Esc>
 endif
 
 " 회사용 encoding & 화면 수정
