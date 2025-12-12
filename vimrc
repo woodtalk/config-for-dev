@@ -206,6 +206,9 @@ augroup filetype_setup
     autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
     autocmd FileType vimwiki,markdown,md,yaml setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
     autocmd FileType vimwiki,markdown,md setlocal backup writebackup undofile
+    " auto save
+    autocmd FileType vimwiki,markdown,md setlocal updatetime=1000
+    autocmd FileType vimwiki,markdown,md autocmd CursorHold,CursorHoldI <buffer> silent! update
 augroup END
 
 set autoread
@@ -243,42 +246,10 @@ if has('gui_running') && (has('win32') || has('win64'))
     set iminsert=1
     set imsearch=-1 " ims using of imi option
 
-    set lines=70 columns=270
+    set lines=45 columns=180
 
-    if filereadable(expand('$HOME/vimfiles/plugged/vimtweak/vimtweak64.dll'))
-        autocmd GUIEnter * call libcallnr(expand('$HOME/vimfiles/plugged/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
-    endif
-
-elseif (has('win32') || has('win64')) || (has('unix') && executable('cmd.exe'))
-
-    let s:im_select_path = expand(s:vim_home . '/bin/im-select.exe')
-
-    if !filereadable(s:im_select_path)
-
-        let s:bin_dir = fnamemodify(s:im_select_path, ':h')
-        if !isdirectory(s:bin_dir) | call mkdir(s:bin_dir, 'p') | endif
-
-        let s:url = 'https://github.com/daipeihust/im-select/releases/download/v2.0.2/im-select.exe'
-
-        if executable('curl')
-            let s:cmd = '!curl -fLo "' . s:im_select_path . '" --create-dirs ' . s:url
-        else
-            let s:cmd = '!powershell -Command "Invoke-WebRequest -Uri ' . s:url . ' -OutFile ''' . s:im_select_path . '''"'
-        endif
-        silent execute s:cmd
-
-        if has('unix')
-            silent execute '!chmod +x ' . s:im_select_path
-        endif
-    endif
-
-    if filereadable(s:im_select_path)
-        let s:bin_dir = fnamemodify(s:im_select_path, ':h')
-        let $PATH = s:bin_dir . ';' . $PATH
-
-        let g:im_select_default = 1033
-        let g:im_select_get_current_cmd = [s:im_select_path]
-        let g:im_select_switch_cmd = [s:im_select_path, '{im}']
+    if filereadable(expand(s:vim_home . '/plugged/vimtweak/vimtweak64.dll'))
+        autocmd GUIEnter * call libcallnr(expand(s:vim_home . '/plugged/vimtweak/vimtweak64.dll'), 'SetAlpha', 238)
     endif
 
 elseif has('macunix')
@@ -338,6 +309,49 @@ EOF
             autocmd BufWritePost * call s:NormalizeNFC()
         augroup END
     endif
+
+" elseif has('win32') || has('win64')
+
+"    if has('python3')
+"        function! s:ImeToEnglish()
+"python3 << EOF
+"import ctypes
+"
+"def set_ime_to_english():
+"    try:
+"        WM_IME_CONTROL = 0x0283
+"        IMC_SETCONVERSIONMODE = 0x0002
+"        IME_CMODE_ALPHANUMERIC = 0x0000
+"
+"        user32 = ctypes.windll.user32
+"        imm32 = ctypes.windll.imm32
+"
+"        hwnd = user32.GetForegroundWindow()
+"        if not hwnd:
+"            return
+"
+"        imwd = imm32.ImmGetDefaultIMEWnd(hwnd)
+"        if not imwd:
+"            return
+"
+"        user32.SendMessageW(imwd, WM_IME_CONTROL, IMC_SETCONVERSIONMODE, IME_CMODE_ALPHANUMERIC)
+"
+"    except Exception as e:
+"        print(e)
+"
+"        pass
+"
+"set_ime_to_english()
+"EOF
+"        endfunction
+"
+"        augroup ime_off
+"            autocmd!
+"            autocmd InsertLeave * call s:ImeToEnglish()
+"        augroup END
+"    endif
+
+" elseif has('unix') && executable('cmd.exe')
 
 else
 
